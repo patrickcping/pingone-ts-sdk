@@ -15,6 +15,7 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { BillOfMaterials } from '../model/billOfMaterials';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -96,7 +97,7 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
      * @summary READ One Bill of Materials
      * @param envID 
      */
-    public async v1EnvironmentsEnvIDBillOfMaterialsGet (envID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneBillOfMaterials (envID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/billOfMaterials'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -112,7 +113,7 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDBillOfMaterialsGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneBillOfMaterials.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -147,11 +148,12 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "BillOfMaterials");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -167,9 +169,9 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
      * @summary UPDATE Bill of Materials
      * @param envID 
      * @param contentType 
-     * @param body 
+     * @param billOfMaterials 
      */
-    public async v1EnvironmentsEnvIDBillOfMaterialsPut (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateBillOfMaterials (envID: string, contentType?: string, billOfMaterials?: BillOfMaterials, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/billOfMaterials'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -185,7 +187,7 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDBillOfMaterialsPut.');
+            throw new Error('Required parameter envID was null or undefined when calling updateBillOfMaterials.');
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
@@ -200,7 +202,7 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
+            body: ObjectSerializer.serialize(billOfMaterials, "BillOfMaterials")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -222,11 +224,12 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "BillOfMaterials");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

@@ -1,10 +1,17 @@
 import localVarRequest from 'request';
 
+export * from './billOfMaterials';
+export * from './billOfMaterialsBookmarks';
+export * from './billOfMaterialsProducts';
+export * from './entityArray';
+export * from './entityArrayEmbedded';
+export * from './environment';
+export * from './environmentLicense';
+export * from './environmentOrganization';
 export * from './errorDetails';
+export * from './inlineObject2';
 export * from './modelError';
 export * from './population';
-export * from './populations';
-export * from './populationsEmbedded';
 
 import * as fs from 'fs';
 
@@ -19,11 +26,18 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
+import { BillOfMaterials } from './billOfMaterials';
+import { BillOfMaterialsBookmarks } from './billOfMaterialsBookmarks';
+import { BillOfMaterialsProducts } from './billOfMaterialsProducts';
+import { EntityArray } from './entityArray';
+import { EntityArrayEmbedded } from './entityArrayEmbedded';
+import { Environment } from './environment';
+import { EnvironmentLicense } from './environmentLicense';
+import { EnvironmentOrganization } from './environmentOrganization';
 import { ErrorDetails } from './errorDetails';
+import { InlineObject2 } from './inlineObject2';
 import { ModelError } from './modelError';
 import { Population } from './population';
-import { Populations } from './populations';
-import { PopulationsEmbedded } from './populationsEmbedded';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -38,14 +52,25 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
+        "BillOfMaterialsProducts.TypeEnum": BillOfMaterialsProducts.TypeEnum,
+        "Environment.RegionEnum": Environment.RegionEnum,
+        "Environment.TypeEnum": Environment.TypeEnum,
+        "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
 }
 
 let typeMap: {[index: string]: any} = {
+    "BillOfMaterials": BillOfMaterials,
+    "BillOfMaterialsBookmarks": BillOfMaterialsBookmarks,
+    "BillOfMaterialsProducts": BillOfMaterialsProducts,
+    "EntityArray": EntityArray,
+    "EntityArrayEmbedded": EntityArrayEmbedded,
+    "Environment": Environment,
+    "EnvironmentLicense": EnvironmentLicense,
+    "EnvironmentOrganization": EnvironmentOrganization,
     "ErrorDetails": ErrorDetails,
+    "InlineObject2": InlineObject2,
     "ModelError": ModelError,
     "Population": Population,
-    "Populations": Populations,
-    "PopulationsEmbedded": PopulationsEmbedded,
 }
 
 export class ObjectSerializer {
