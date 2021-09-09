@@ -1,0 +1,26 @@
+{
+    "name": "pingone-ts-sdk-generated",
+    "version": "1.0.0",
+    "description": "NodeJS client for pingone-ts-sdk-generated",
+    "repository": "patrickcping/pingone-ts-sdk",
+    "main": "dist/api.js",
+    "types": "dist/api.d.ts",
+    "scripts": {
+        "clean": "rm -Rf node_modules/ *.js",
+        "build": "tsc",
+        "test": "npm run build && node dist/client.js"
+    },
+    "author": "OpenAPI-Generator Contributors",
+    "license": "Unlicense",
+    "dependencies": {
+        "@types/bluebird": "3.5.33",
+        "@types/request": "*",
+        "bluebird": "^3.5.0",
+        "request": "^2.81.0",
+        "rewire": "^3.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "8.10.34",
+        "typescript": "^2.4.2"
+    }
+}
