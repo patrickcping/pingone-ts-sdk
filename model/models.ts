@@ -4,12 +4,17 @@ export * from './application';
 export * from './applicationAccessControl';
 export * from './applicationAccessControlGroup';
 export * from './applicationAccessControlRole';
+export * from './applicationAttributeMapping';
 export * from './applicationIcon';
 export * from './applicationMobile';
 export * from './applicationMobileIntegrityDetection';
 export * from './applicationMobileIntegrityDetectionCacheDuration';
 export * from './applicationOIDC';
 export * from './applicationOIDCAllOf';
+export * from './applicationResourceGrant';
+export * from './applicationResourceGrantApplication';
+export * from './applicationResourceGrantResource';
+export * from './applicationResourceGrantScopes';
 export * from './applicationSAML';
 export * from './applicationSAMLAllOf';
 export * from './applicationSAMLAllOfIdpSigningtype';
@@ -73,12 +78,17 @@ import { Application } from './application';
 import { ApplicationAccessControl } from './applicationAccessControl';
 import { ApplicationAccessControlGroup } from './applicationAccessControlGroup';
 import { ApplicationAccessControlRole } from './applicationAccessControlRole';
+import { ApplicationAttributeMapping } from './applicationAttributeMapping';
 import { ApplicationIcon } from './applicationIcon';
 import { ApplicationMobile } from './applicationMobile';
 import { ApplicationMobileIntegrityDetection } from './applicationMobileIntegrityDetection';
 import { ApplicationMobileIntegrityDetectionCacheDuration } from './applicationMobileIntegrityDetectionCacheDuration';
 import { ApplicationOIDC } from './applicationOIDC';
 import { ApplicationOIDCAllOf } from './applicationOIDCAllOf';
+import { ApplicationResourceGrant } from './applicationResourceGrant';
+import { ApplicationResourceGrantApplication } from './applicationResourceGrantApplication';
+import { ApplicationResourceGrantResource } from './applicationResourceGrantResource';
+import { ApplicationResourceGrantScopes } from './applicationResourceGrantScopes';
 import { ApplicationSAML } from './applicationSAML';
 import { ApplicationSAMLAllOf } from './applicationSAMLAllOf';
 import { ApplicationSAMLAllOfIdpSigningtype } from './applicationSAMLAllOfIdpSigningtype';
@@ -142,6 +152,7 @@ let enumsMap: {[index: string]: any} = {
         "Application.ProtocolEnum": Application.ProtocolEnum,
         "Application.TagsEnum": Application.TagsEnum,
         "Application.TypeEnum": Application.TypeEnum,
+        "ApplicationAttributeMapping.MappingTypeEnum": ApplicationAttributeMapping.MappingTypeEnum,
         "ApplicationMobileIntegrityDetection.ModeEnum": ApplicationMobileIntegrityDetection.ModeEnum,
         "ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum": ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum,
         "ApplicationOIDC.EnabledEnum": ApplicationOIDC.EnabledEnum,
@@ -176,12 +187,17 @@ let typeMap: {[index: string]: any} = {
     "ApplicationAccessControl": ApplicationAccessControl,
     "ApplicationAccessControlGroup": ApplicationAccessControlGroup,
     "ApplicationAccessControlRole": ApplicationAccessControlRole,
+    "ApplicationAttributeMapping": ApplicationAttributeMapping,
     "ApplicationIcon": ApplicationIcon,
     "ApplicationMobile": ApplicationMobile,
     "ApplicationMobileIntegrityDetection": ApplicationMobileIntegrityDetection,
     "ApplicationMobileIntegrityDetectionCacheDuration": ApplicationMobileIntegrityDetectionCacheDuration,
     "ApplicationOIDC": ApplicationOIDC,
     "ApplicationOIDCAllOf": ApplicationOIDCAllOf,
+    "ApplicationResourceGrant": ApplicationResourceGrant,
+    "ApplicationResourceGrantApplication": ApplicationResourceGrantApplication,
+    "ApplicationResourceGrantResource": ApplicationResourceGrantResource,
+    "ApplicationResourceGrantScopes": ApplicationResourceGrantScopes,
     "ApplicationSAML": ApplicationSAML,
     "ApplicationSAMLAllOf": ApplicationSAMLAllOf,
     "ApplicationSAMLAllOfIdpSigningtype": ApplicationSAMLAllOfIdpSigningtype,

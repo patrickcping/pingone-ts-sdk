@@ -11,7 +11,9 @@
  */
 
 import { RequestFile } from './models';
+import { ApplicationAttributeMapping } from './applicationAttributeMapping';
 import { ApplicationOIDC } from './applicationOIDC';
+import { ApplicationResourceGrant } from './applicationResourceGrant';
 import { ApplicationSAML } from './applicationSAML';
 import { Environment } from './environment';
 import { Group } from './group';
@@ -23,8 +25,10 @@ import { RoleAssignment } from './roleAssignment';
 import { User } from './user';
 
 export class EntityArrayEmbedded {
+    'attributes'?: Array<ApplicationAttributeMapping>;
     'applications'?: Array<ApplicationSAML | ApplicationOIDC>;
     'environments'?: Array<Environment>;
+    'grants'?: Array<ApplicationResourceGrant>;
     'groups'?: Array<Group>;
     'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
@@ -37,6 +41,11 @@ export class EntityArrayEmbedded {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
+            "name": "attributes",
+            "baseName": "attributes",
+            "type": "Array<ApplicationAttributeMapping>"
+        },
+        {
             "name": "applications",
             "baseName": "applications",
             "type": "Array<ApplicationSAML | ApplicationOIDC>"
@@ -45,6 +54,11 @@ export class EntityArrayEmbedded {
             "name": "environments",
             "baseName": "environments",
             "type": "Array<Environment>"
+        },
+        {
+            "name": "grants",
+            "baseName": "grants",
+            "type": "Array<ApplicationResourceGrant>"
         },
         {
             "name": "groups",
