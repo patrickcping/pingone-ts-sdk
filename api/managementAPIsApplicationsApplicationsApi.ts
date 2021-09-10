@@ -15,6 +15,7 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';

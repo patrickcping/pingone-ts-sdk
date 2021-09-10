@@ -15,6 +15,8 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
+import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -98,7 +100,7 @@ export class ManagementAPIsUsersUserAccountsApi {
      * @param userID 
      * @param contentType 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDPost (envID: string, userID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDPost (envID: string, userID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -156,11 +158,12 @@ export class ManagementAPIsUsersUserAccountsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

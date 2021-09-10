@@ -15,6 +15,8 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
+import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -93,13 +95,15 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ All Users in a Group with Other User Attribute
+     * @summary READ All Group IDs for User
      * @param envID 
-     * @param filter 
+     * @param userID 
+     * @param include 
      */
-    public async v1EnvironmentsEnvIDUsersGet (envID: string, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
+    public async readAllGroupIDsForUser (envID: string, userID: string, include?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -113,11 +117,16 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllGroupIDsForUser.');
         }
 
-        if (filter !== undefined) {
-            localVarQueryParameters['filter'] = ObjectSerializer.serialize(filter, "string");
+        // verify required parameter 'userID' is not null or undefined
+        if (userID === null || userID === undefined) {
+            throw new Error('Required parameter userID was null or undefined when calling readAllGroupIDsForUser.');
+        }
+
+        if (include !== undefined) {
+            localVarQueryParameters['include'] = ObjectSerializer.serialize(include, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -169,15 +178,13 @@ export class ManagementAPIsUsersGroupMembershipApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ All Group IDs for User
+     * @summary READ All Users in a Group with Other User Attribute
      * @param envID 
-     * @param userID 
-     * @param include 
+     * @param filter 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDGet (envID: string, userID: string, include?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+    public async readAllUsersInAGroupWithOtherUserAttribute (envID: string, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -191,16 +198,11 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllUsersInAGroupWithOtherUserAttribute.');
         }
 
-        // verify required parameter 'userID' is not null or undefined
-        if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDGet.');
-        }
-
-        if (include !== undefined) {
-            localVarQueryParameters['include'] = ObjectSerializer.serialize(include, "string");
+        if (filter !== undefined) {
+            localVarQueryParameters['filter'] = ObjectSerializer.serialize(filter, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -235,11 +237,12 @@ export class ManagementAPIsUsersGroupMembershipApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

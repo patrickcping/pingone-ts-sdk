@@ -16,6 +16,7 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { EntityArray } from '../model/entityArray';
+import { P1Error } from '../model/p1Error';
 import { Population } from '../model/population';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';

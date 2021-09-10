@@ -12,11 +12,19 @@
 
 import { RequestFile } from './models';
 import { Environment } from './environment';
+import { GroupMembership } from './groupMembership';
 import { Population } from './population';
+import { Role } from './role';
+import { RoleAssignment } from './roleAssignment';
+import { User } from './user';
 
 export class EntityArrayEmbedded {
     'environments'?: Array<Environment>;
+    'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
+    'roleAssignments'?: Array<RoleAssignment>;
+    'roles'?: Array<Role>;
+    'users'?: Array<User>;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,9 +35,29 @@ export class EntityArrayEmbedded {
             "type": "Array<Environment>"
         },
         {
+            "name": "groupMemberships",
+            "baseName": "groupMemberships",
+            "type": "Array<GroupMembership>"
+        },
+        {
             "name": "populations",
             "baseName": "populations",
             "type": "Array<Population>"
+        },
+        {
+            "name": "roleAssignments",
+            "baseName": "roleAssignments",
+            "type": "Array<RoleAssignment>"
+        },
+        {
+            "name": "roles",
+            "baseName": "roles",
+            "type": "Array<Role>"
+        },
+        {
+            "name": "users",
+            "baseName": "users",
+            "type": "Array<User>"
         }    ];
 
     static getAttributeTypeMap() {

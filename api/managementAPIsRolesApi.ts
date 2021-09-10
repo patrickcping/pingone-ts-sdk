@@ -15,6 +15,9 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
+import { P1Error } from '../model/p1Error';
+import { Role } from '../model/role';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -95,7 +98,7 @@ export class ManagementAPIsRolesApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary READ All Roles
      */
-    public async v1RolesGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readAllRoles (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/roles';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -140,11 +143,12 @@ export class ManagementAPIsRolesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -160,7 +164,7 @@ export class ManagementAPIsRolesApi {
      * @summary READ One Role
      * @param roleID 
      */
-    public async v1RolesRoleIDGet (roleID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneRole (roleID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Role;  }> {
         const localVarPath = this.basePath + '/v1/roles/{roleID}'
             .replace('{' + 'roleID' + '}', encodeURIComponent(String(roleID)));
         let localVarQueryParameters: any = {};
@@ -176,7 +180,7 @@ export class ManagementAPIsRolesApi {
 
         // verify required parameter 'roleID' is not null or undefined
         if (roleID === null || roleID === undefined) {
-            throw new Error('Required parameter roleID was null or undefined when calling v1RolesRoleIDGet.');
+            throw new Error('Required parameter roleID was null or undefined when calling readOneRole.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -211,11 +215,12 @@ export class ManagementAPIsRolesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Role;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Role");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

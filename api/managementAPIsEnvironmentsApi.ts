@@ -18,6 +18,7 @@ import http from 'http';
 import { EntityArray } from '../model/entityArray';
 import { Environment } from '../model/environment';
 import { InlineObject2 } from '../model/inlineObject2';
+import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';

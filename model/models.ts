@@ -8,10 +8,31 @@ export * from './entityArrayEmbedded';
 export * from './environment';
 export * from './environmentLicense';
 export * from './environmentOrganization';
-export * from './errorDetails';
+export * from './groupMembership';
 export * from './inlineObject2';
-export * from './modelError';
+export * from './p1Error';
+export * from './p1ErrorDetails';
 export * from './population';
+export * from './role';
+export * from './roleAssignment';
+export * from './roleAssignmentEnvironment';
+export * from './roleAssignmentRole';
+export * from './roleAssignmentScope';
+export * from './rolePermissions';
+export * from './user';
+export * from './userAccount';
+export * from './userAddress';
+export * from './userEnvironment';
+export * from './userIdentityProvider';
+export * from './userLastSignOn';
+export * from './userLifecycle';
+export * from './userName';
+export * from './userPassword';
+export * from './userPasswordExternal';
+export * from './userPasswordExternalGateway';
+export * from './userPasswordExternalGatewayUserType';
+export * from './userPhoto';
+export * from './userPopulation';
 
 import * as fs from 'fs';
 
@@ -34,10 +55,31 @@ import { EntityArrayEmbedded } from './entityArrayEmbedded';
 import { Environment } from './environment';
 import { EnvironmentLicense } from './environmentLicense';
 import { EnvironmentOrganization } from './environmentOrganization';
-import { ErrorDetails } from './errorDetails';
+import { GroupMembership } from './groupMembership';
 import { InlineObject2 } from './inlineObject2';
-import { ModelError } from './modelError';
+import { P1Error } from './p1Error';
+import { P1ErrorDetails } from './p1ErrorDetails';
 import { Population } from './population';
+import { Role } from './role';
+import { RoleAssignment } from './roleAssignment';
+import { RoleAssignmentEnvironment } from './roleAssignmentEnvironment';
+import { RoleAssignmentRole } from './roleAssignmentRole';
+import { RoleAssignmentScope } from './roleAssignmentScope';
+import { RolePermissions } from './rolePermissions';
+import { User } from './user';
+import { UserAccount } from './userAccount';
+import { UserAddress } from './userAddress';
+import { UserEnvironment } from './userEnvironment';
+import { UserIdentityProvider } from './userIdentityProvider';
+import { UserLastSignOn } from './userLastSignOn';
+import { UserLifecycle } from './userLifecycle';
+import { UserName } from './userName';
+import { UserPassword } from './userPassword';
+import { UserPasswordExternal } from './userPasswordExternal';
+import { UserPasswordExternalGateway } from './userPasswordExternalGateway';
+import { UserPasswordExternalGatewayUserType } from './userPasswordExternalGatewayUserType';
+import { UserPhoto } from './userPhoto';
+import { UserPopulation } from './userPopulation';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -56,6 +98,8 @@ let enumsMap: {[index: string]: any} = {
         "Environment.RegionEnum": Environment.RegionEnum,
         "Environment.TypeEnum": Environment.TypeEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
+        "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,
+        "User.VerifyStatusEnum": User.VerifyStatusEnum,
 }
 
 let typeMap: {[index: string]: any} = {
@@ -67,10 +111,31 @@ let typeMap: {[index: string]: any} = {
     "Environment": Environment,
     "EnvironmentLicense": EnvironmentLicense,
     "EnvironmentOrganization": EnvironmentOrganization,
-    "ErrorDetails": ErrorDetails,
+    "GroupMembership": GroupMembership,
     "InlineObject2": InlineObject2,
-    "ModelError": ModelError,
+    "P1Error": P1Error,
+    "P1ErrorDetails": P1ErrorDetails,
     "Population": Population,
+    "Role": Role,
+    "RoleAssignment": RoleAssignment,
+    "RoleAssignmentEnvironment": RoleAssignmentEnvironment,
+    "RoleAssignmentRole": RoleAssignmentRole,
+    "RoleAssignmentScope": RoleAssignmentScope,
+    "RolePermissions": RolePermissions,
+    "User": User,
+    "UserAccount": UserAccount,
+    "UserAddress": UserAddress,
+    "UserEnvironment": UserEnvironment,
+    "UserIdentityProvider": UserIdentityProvider,
+    "UserLastSignOn": UserLastSignOn,
+    "UserLifecycle": UserLifecycle,
+    "UserName": UserName,
+    "UserPassword": UserPassword,
+    "UserPasswordExternal": UserPasswordExternal,
+    "UserPasswordExternalGateway": UserPasswordExternalGateway,
+    "UserPasswordExternalGatewayUserType": UserPasswordExternalGatewayUserType,
+    "UserPhoto": UserPhoto,
+    "UserPopulation": UserPopulation,
 }
 
 export class ObjectSerializer {

@@ -15,6 +15,8 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { P1Error } from '../model/p1Error';
+import { User } from '../model/user';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -96,9 +98,9 @@ export class ManagementAPIsUsersUsersApi {
      * @summary CREATE User (Import)
      * @param envID 
      * @param contentType 
-     * @param body 
+     * @param user 
      */
-    public async v1EnvironmentsEnvIDUsersPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createUserImport (envID: string, contentType?: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -114,7 +116,7 @@ export class ManagementAPIsUsersUsersApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersPost.');
+            throw new Error('Required parameter envID was null or undefined when calling createUserImport.');
         }
 
         localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
@@ -129,7 +131,86 @@ export class ManagementAPIsUsersUsersApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
+            body: ObjectSerializer.serialize(user, "User")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "User");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary DELETE User
+     * @param envID 
+     * @param userID 
+     */
+    public async deleteUser (envID: string, userID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling deleteUser.');
+        }
+
+        // verify required parameter 'userID' is not null or undefined
+        if (userID === null || userID === undefined) {
+            throw new Error('Required parameter userID was null or undefined when calling deleteUser.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
         };
 
         let authenticationPromise = Promise.resolve();
@@ -168,11 +249,13 @@ export class ManagementAPIsUsersUsersApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary DELETE User
+     * @summary UPDATE User (Patch)
      * @param envID 
      * @param userID 
+     * @param contentType 
+     * @param user 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDDelete (envID: string, userID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateUserPatch (envID: string, userID: string, contentType?: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -189,25 +272,109 @@ export class ManagementAPIsUsersUsersApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDDelete.');
+            throw new Error('Required parameter envID was null or undefined when calling updateUserPatch.');
         }
 
         // verify required parameter 'userID' is not null or undefined
         if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDDelete.');
+            throw new Error('Required parameter userID was null or undefined when calling updateUserPatch.');
         }
 
+        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
+            method: 'PATCH',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
+            body: ObjectSerializer.serialize(user, "User")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary UPDATE User (Put)
+     * @param envID 
+     * @param userID 
+     * @param contentType 
+     * @param user 
+     */
+    public async updateUserPut (envID: string, userID: string, contentType?: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling updateUserPut.');
+        }
+
+        // verify required parameter 'userID' is not null or undefined
+        if (userID === null || userID === undefined) {
+            throw new Error('Required parameter userID was null or undefined when calling updateUserPut.');
+        }
+
+        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PUT',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(user, "User")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -356,170 +523,6 @@ export class ManagementAPIsUsersUsersApi {
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'PUT',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(body, "object")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary UPDATE User (Patch)
-     * @param envID 
-     * @param userID 
-     * @param contentType 
-     * @param body 
-     */
-    public async v1EnvironmentsEnvIDUsersUserIDPatch (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPatch.');
-        }
-
-        // verify required parameter 'userID' is not null or undefined
-        if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPatch.');
-        }
-
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'PATCH',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(body, "object")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary UPDATE User (Put)
-     * @param envID 
-     * @param userID 
-     * @param contentType 
-     * @param body 
-     */
-    public async v1EnvironmentsEnvIDUsersUserIDPut (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPut.');
-        }
-
-        // verify required parameter 'userID' is not null or undefined
-        if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPut.');
-        }
-
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
