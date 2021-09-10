@@ -15,6 +15,7 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { ApplicationSecret } from '../model/applicationSecret';
 import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -98,7 +99,7 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
      * @param envID 
      * @param appID 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDSecretGet (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readApplicationSecret (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationSecret;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/secret'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -115,12 +116,12 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSecretGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readApplicationSecret.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSecretGet.');
+            throw new Error('Required parameter appID was null or undefined when calling readApplicationSecret.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -155,11 +156,12 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationSecret;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "ApplicationSecret");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -177,7 +179,7 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
      * @param appID 
      * @param contentType 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDSecretPost (envID: string, appID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateApplicationSecret (envID: string, appID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/secret'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -194,12 +196,12 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSecretPost.');
+            throw new Error('Required parameter envID was null or undefined when calling updateApplicationSecret.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSecretPost.');
+            throw new Error('Required parameter appID was null or undefined when calling updateApplicationSecret.');
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");

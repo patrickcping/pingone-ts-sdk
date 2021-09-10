@@ -11,12 +11,12 @@
  */
 
 import { RequestFile } from './models';
-import { RoleAssignmentEnvironment } from './roleAssignmentEnvironment';
+import { ObjectEnvironment } from './objectEnvironment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
 import { RoleAssignmentScope } from './roleAssignmentScope';
 
 export class RoleAssignment {
-    'environment'?: RoleAssignmentEnvironment;
+    'environment'?: ObjectEnvironment;
     /**
     * A string that specifies the user role assignment ID.
     */
@@ -34,7 +34,7 @@ export class RoleAssignment {
         {
             "name": "environment",
             "baseName": "environment",
-            "type": "RoleAssignmentEnvironment"
+            "type": "ObjectEnvironment"
         },
         {
             "name": "id",

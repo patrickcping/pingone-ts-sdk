@@ -1,5 +1,22 @@
 import localVarRequest from 'request';
 
+export * from './application';
+export * from './applicationAccessControl';
+export * from './applicationAccessControlGroup';
+export * from './applicationAccessControlRole';
+export * from './applicationIcon';
+export * from './applicationMobile';
+export * from './applicationMobileIntegrityDetection';
+export * from './applicationMobileIntegrityDetectionCacheDuration';
+export * from './applicationOIDC';
+export * from './applicationOIDCAllOf';
+export * from './applicationSAML';
+export * from './applicationSAMLAllOf';
+export * from './applicationSAMLAllOfIdpSigningtype';
+export * from './applicationSAMLAllOfIdpSigningtypeKey';
+export * from './applicationSAMLAllOfSpVerification';
+export * from './applicationSAMLAllOfSpVerificationCertificates';
+export * from './applicationSecret';
 export * from './billOfMaterials';
 export * from './billOfMaterialsBookmarks';
 export * from './billOfMaterialsProducts';
@@ -8,14 +25,19 @@ export * from './entityArrayEmbedded';
 export * from './environment';
 export * from './environmentLicense';
 export * from './environmentOrganization';
+export * from './group';
+export * from './groupDirectMemberCounts';
 export * from './groupMembership';
+export * from './groupTotalMemberCounts';
 export * from './inlineObject2';
+export * from './objectEnvironment';
+export * from './objectPopulation';
 export * from './p1Error';
 export * from './p1ErrorDetails';
 export * from './population';
+export * from './resource';
 export * from './role';
 export * from './roleAssignment';
-export * from './roleAssignmentEnvironment';
 export * from './roleAssignmentRole';
 export * from './roleAssignmentScope';
 export * from './rolePermissions';
@@ -47,6 +69,23 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
+import { Application } from './application';
+import { ApplicationAccessControl } from './applicationAccessControl';
+import { ApplicationAccessControlGroup } from './applicationAccessControlGroup';
+import { ApplicationAccessControlRole } from './applicationAccessControlRole';
+import { ApplicationIcon } from './applicationIcon';
+import { ApplicationMobile } from './applicationMobile';
+import { ApplicationMobileIntegrityDetection } from './applicationMobileIntegrityDetection';
+import { ApplicationMobileIntegrityDetectionCacheDuration } from './applicationMobileIntegrityDetectionCacheDuration';
+import { ApplicationOIDC } from './applicationOIDC';
+import { ApplicationOIDCAllOf } from './applicationOIDCAllOf';
+import { ApplicationSAML } from './applicationSAML';
+import { ApplicationSAMLAllOf } from './applicationSAMLAllOf';
+import { ApplicationSAMLAllOfIdpSigningtype } from './applicationSAMLAllOfIdpSigningtype';
+import { ApplicationSAMLAllOfIdpSigningtypeKey } from './applicationSAMLAllOfIdpSigningtypeKey';
+import { ApplicationSAMLAllOfSpVerification } from './applicationSAMLAllOfSpVerification';
+import { ApplicationSAMLAllOfSpVerificationCertificates } from './applicationSAMLAllOfSpVerificationCertificates';
+import { ApplicationSecret } from './applicationSecret';
 import { BillOfMaterials } from './billOfMaterials';
 import { BillOfMaterialsBookmarks } from './billOfMaterialsBookmarks';
 import { BillOfMaterialsProducts } from './billOfMaterialsProducts';
@@ -55,14 +94,19 @@ import { EntityArrayEmbedded } from './entityArrayEmbedded';
 import { Environment } from './environment';
 import { EnvironmentLicense } from './environmentLicense';
 import { EnvironmentOrganization } from './environmentOrganization';
+import { Group } from './group';
+import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
 import { GroupMembership } from './groupMembership';
+import { GroupTotalMemberCounts } from './groupTotalMemberCounts';
 import { InlineObject2 } from './inlineObject2';
+import { ObjectEnvironment } from './objectEnvironment';
+import { ObjectPopulation } from './objectPopulation';
 import { P1Error } from './p1Error';
 import { P1ErrorDetails } from './p1ErrorDetails';
 import { Population } from './population';
+import { Resource } from './resource';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
-import { RoleAssignmentEnvironment } from './roleAssignmentEnvironment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
 import { RoleAssignmentScope } from './roleAssignmentScope';
 import { RolePermissions } from './rolePermissions';
@@ -94,15 +138,57 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
+        "Application.EnabledEnum": Application.EnabledEnum,
+        "Application.ProtocolEnum": Application.ProtocolEnum,
+        "Application.TagsEnum": Application.TagsEnum,
+        "Application.TypeEnum": Application.TypeEnum,
+        "ApplicationMobileIntegrityDetection.ModeEnum": ApplicationMobileIntegrityDetection.ModeEnum,
+        "ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum": ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum,
+        "ApplicationOIDC.EnabledEnum": ApplicationOIDC.EnabledEnum,
+        "ApplicationOIDC.ProtocolEnum": ApplicationOIDC.ProtocolEnum,
+        "ApplicationOIDC.TagsEnum": ApplicationOIDC.TagsEnum,
+        "ApplicationOIDC.TypeEnum": ApplicationOIDC.TypeEnum,
+        "ApplicationOIDC.GrantTypesEnum": ApplicationOIDC.GrantTypesEnum,
+        "ApplicationOIDC.PkceEnforcementEnum": ApplicationOIDC.PkceEnforcementEnum,
+        "ApplicationOIDC.ResponseTypesEnum": ApplicationOIDC.ResponseTypesEnum,
+        "ApplicationOIDC.TokenEndpointAuthMethodEnum": ApplicationOIDC.TokenEndpointAuthMethodEnum,
+        "ApplicationOIDCAllOf.GrantTypesEnum": ApplicationOIDCAllOf.GrantTypesEnum,
+        "ApplicationOIDCAllOf.PkceEnforcementEnum": ApplicationOIDCAllOf.PkceEnforcementEnum,
+        "ApplicationOIDCAllOf.ResponseTypesEnum": ApplicationOIDCAllOf.ResponseTypesEnum,
+        "ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum": ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum,
+        "ApplicationSAML.EnabledEnum": ApplicationSAML.EnabledEnum,
+        "ApplicationSAML.ProtocolEnum": ApplicationSAML.ProtocolEnum,
+        "ApplicationSAML.TagsEnum": ApplicationSAML.TagsEnum,
+        "ApplicationSAML.TypeEnum": ApplicationSAML.TypeEnum,
+        "ApplicationSAML.SloBindingEnum": ApplicationSAML.SloBindingEnum,
+        "ApplicationSAMLAllOf.SloBindingEnum": ApplicationSAMLAllOf.SloBindingEnum,
         "BillOfMaterialsProducts.TypeEnum": BillOfMaterialsProducts.TypeEnum,
         "Environment.RegionEnum": Environment.RegionEnum,
         "Environment.TypeEnum": Environment.TypeEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
+        "Resource.TypeEnum": Resource.TypeEnum,
         "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,
         "User.VerifyStatusEnum": User.VerifyStatusEnum,
 }
 
 let typeMap: {[index: string]: any} = {
+    "Application": Application,
+    "ApplicationAccessControl": ApplicationAccessControl,
+    "ApplicationAccessControlGroup": ApplicationAccessControlGroup,
+    "ApplicationAccessControlRole": ApplicationAccessControlRole,
+    "ApplicationIcon": ApplicationIcon,
+    "ApplicationMobile": ApplicationMobile,
+    "ApplicationMobileIntegrityDetection": ApplicationMobileIntegrityDetection,
+    "ApplicationMobileIntegrityDetectionCacheDuration": ApplicationMobileIntegrityDetectionCacheDuration,
+    "ApplicationOIDC": ApplicationOIDC,
+    "ApplicationOIDCAllOf": ApplicationOIDCAllOf,
+    "ApplicationSAML": ApplicationSAML,
+    "ApplicationSAMLAllOf": ApplicationSAMLAllOf,
+    "ApplicationSAMLAllOfIdpSigningtype": ApplicationSAMLAllOfIdpSigningtype,
+    "ApplicationSAMLAllOfIdpSigningtypeKey": ApplicationSAMLAllOfIdpSigningtypeKey,
+    "ApplicationSAMLAllOfSpVerification": ApplicationSAMLAllOfSpVerification,
+    "ApplicationSAMLAllOfSpVerificationCertificates": ApplicationSAMLAllOfSpVerificationCertificates,
+    "ApplicationSecret": ApplicationSecret,
     "BillOfMaterials": BillOfMaterials,
     "BillOfMaterialsBookmarks": BillOfMaterialsBookmarks,
     "BillOfMaterialsProducts": BillOfMaterialsProducts,
@@ -111,14 +197,19 @@ let typeMap: {[index: string]: any} = {
     "Environment": Environment,
     "EnvironmentLicense": EnvironmentLicense,
     "EnvironmentOrganization": EnvironmentOrganization,
+    "Group": Group,
+    "GroupDirectMemberCounts": GroupDirectMemberCounts,
     "GroupMembership": GroupMembership,
+    "GroupTotalMemberCounts": GroupTotalMemberCounts,
     "InlineObject2": InlineObject2,
+    "ObjectEnvironment": ObjectEnvironment,
+    "ObjectPopulation": ObjectPopulation,
     "P1Error": P1Error,
     "P1ErrorDetails": P1ErrorDetails,
     "Population": Population,
+    "Resource": Resource,
     "Role": Role,
     "RoleAssignment": RoleAssignment,
-    "RoleAssignmentEnvironment": RoleAssignmentEnvironment,
     "RoleAssignmentRole": RoleAssignmentRole,
     "RoleAssignmentScope": RoleAssignmentScope,
     "RolePermissions": RolePermissions,

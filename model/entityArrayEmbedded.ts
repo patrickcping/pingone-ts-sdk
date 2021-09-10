@@ -11,17 +11,24 @@
  */
 
 import { RequestFile } from './models';
+import { ApplicationOIDC } from './applicationOIDC';
+import { ApplicationSAML } from './applicationSAML';
 import { Environment } from './environment';
+import { Group } from './group';
 import { GroupMembership } from './groupMembership';
 import { Population } from './population';
+import { Resource } from './resource';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
 import { User } from './user';
 
 export class EntityArrayEmbedded {
+    'applications'?: Array<ApplicationSAML | ApplicationOIDC>;
     'environments'?: Array<Environment>;
+    'groups'?: Array<Group>;
     'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
+    'resources'?: Array<Resource>;
     'roleAssignments'?: Array<RoleAssignment>;
     'roles'?: Array<Role>;
     'users'?: Array<User>;
@@ -30,9 +37,19 @@ export class EntityArrayEmbedded {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
+            "name": "applications",
+            "baseName": "applications",
+            "type": "Array<ApplicationSAML | ApplicationOIDC>"
+        },
+        {
             "name": "environments",
             "baseName": "environments",
             "type": "Array<Environment>"
+        },
+        {
+            "name": "groups",
+            "baseName": "groups",
+            "type": "Array<Group>"
         },
         {
             "name": "groupMemberships",
@@ -43,6 +60,11 @@ export class EntityArrayEmbedded {
             "name": "populations",
             "baseName": "populations",
             "type": "Array<Population>"
+        },
+        {
+            "name": "resources",
+            "baseName": "resources",
+            "type": "Array<Resource>"
         },
         {
             "name": "roleAssignments",
