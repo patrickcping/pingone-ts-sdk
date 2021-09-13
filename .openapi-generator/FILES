@@ -126,6 +126,9 @@ model/roleAssignment.ts
 model/roleAssignmentRole.ts
 model/roleAssignmentScope.ts
 model/rolePermissions.ts
+model/schema.ts
+model/schemaAttribute.ts
+model/schemaAttributeSchema.ts
 model/user.ts
 model/userAccount.ts
 model/userAddress.ts

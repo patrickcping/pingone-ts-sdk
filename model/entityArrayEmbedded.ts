@@ -22,10 +22,12 @@ import { Population } from './population';
 import { Resource } from './resource';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
+import { Schema } from './schema';
+import { SchemaAttribute } from './schemaAttribute';
 import { User } from './user';
 
 export class EntityArrayEmbedded {
-    'attributes'?: Array<ApplicationAttributeMapping>;
+    'attributes'?: Array<ApplicationAttributeMapping | SchemaAttribute>;
     'applications'?: Array<ApplicationSAML | ApplicationOIDC>;
     'environments'?: Array<Environment>;
     'grants'?: Array<ApplicationResourceGrant>;
@@ -35,6 +37,7 @@ export class EntityArrayEmbedded {
     'resources'?: Array<Resource>;
     'roleAssignments'?: Array<RoleAssignment>;
     'roles'?: Array<Role>;
+    'schemas'?: Array<Schema>;
     'users'?: Array<User>;
 
     static discriminator: string | undefined = undefined;
@@ -43,7 +46,7 @@ export class EntityArrayEmbedded {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "Array<ApplicationAttributeMapping>"
+            "type": "Array<ApplicationAttributeMapping | SchemaAttribute>"
         },
         {
             "name": "applications",
@@ -89,6 +92,11 @@ export class EntityArrayEmbedded {
             "name": "roles",
             "baseName": "roles",
             "type": "Array<Role>"
+        },
+        {
+            "name": "schemas",
+            "baseName": "schemas",
+            "type": "Array<Schema>"
         },
         {
             "name": "users",

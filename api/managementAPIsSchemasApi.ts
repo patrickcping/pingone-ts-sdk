@@ -15,7 +15,10 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
 import { P1Error } from '../model/p1Error';
+import { Schema } from '../model/schema';
+import { SchemaAttribute } from '../model/schemaAttribute';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -94,12 +97,16 @@ export class ManagementAPIsSchemasApi {
 
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ All Schemas
+     * @summary CREATE Attribute
      * @param envID 
+     * @param schemaID 
+     * @param contentType 
+     * @param schemaAttribute 
      */
-    public async v1EnvironmentsEnvIDSchemasGet (envID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
+    public async createAttribute (envID: string, schemaID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -113,20 +120,27 @@ export class ManagementAPIsSchemasApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasGet.');
+            throw new Error('Required parameter envID was null or undefined when calling createAttribute.');
         }
 
+        // verify required parameter 'schemaID' is not null or undefined
+        if (schemaID === null || schemaID === undefined) {
+            throw new Error('Required parameter schemaID was null or undefined when calling createAttribute.');
+        }
+
+        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
+            method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
+            body: ObjectSerializer.serialize(schemaAttribute, "SchemaAttribute")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -148,11 +162,12 @@ export class ManagementAPIsSchemasApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "SchemaAttribute");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -171,7 +186,7 @@ export class ManagementAPIsSchemasApi {
      * @param attributeID 
      * @param contentType 
      */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete (envID: string, schemaID: string, attributeID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteAttribute (envID: string, schemaID: string, attributeID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -189,17 +204,17 @@ export class ManagementAPIsSchemasApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete.');
+            throw new Error('Required parameter envID was null or undefined when calling deleteAttribute.');
         }
 
         // verify required parameter 'schemaID' is not null or undefined
         if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete.');
+            throw new Error('Required parameter schemaID was null or undefined when calling deleteAttribute.');
         }
 
         // verify required parameter 'attributeID' is not null or undefined
         if (attributeID === null || attributeID === undefined) {
-            throw new Error('Required parameter attributeID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDDelete.');
+            throw new Error('Required parameter attributeID was null or undefined when calling deleteAttribute.');
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
@@ -252,16 +267,14 @@ export class ManagementAPIsSchemasApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ One Attribute
+     * @summary READ All (Schema) Attributes
      * @param envID 
      * @param schemaID 
-     * @param attributeID 
      */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet (envID: string, schemaID: string, attributeID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
+    public async readAllSchemaAttributes (envID: string, schemaID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
-            .replace('{' + 'attributeID' + '}', encodeURIComponent(String(attributeID)));
+            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -275,17 +288,12 @@ export class ManagementAPIsSchemasApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllSchemaAttributes.');
         }
 
         // verify required parameter 'schemaID' is not null or undefined
         if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet.');
-        }
-
-        // verify required parameter 'attributeID' is not null or undefined
-        if (attributeID === null || attributeID === undefined) {
-            throw new Error('Required parameter attributeID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDGet.');
+            throw new Error('Required parameter schemaID was null or undefined when calling readAllSchemaAttributes.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -320,11 +328,12 @@ export class ManagementAPIsSchemasApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -337,14 +346,84 @@ export class ManagementAPIsSchemasApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary UPDATE Attribute (Patch)
+     * @summary READ All Schemas
+     * @param envID 
+     */
+    public async readAllSchemas (envID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling readAllSchemas.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary READ One Attribute
      * @param envID 
      * @param schemaID 
      * @param attributeID 
-     * @param contentType 
-     * @param body 
      */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch (envID: string, schemaID: string, attributeID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneAttribute (envID: string, schemaID: string, attributeID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -362,17 +441,184 @@ export class ManagementAPIsSchemasApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneAttribute.');
         }
 
         // verify required parameter 'schemaID' is not null or undefined
         if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch.');
+            throw new Error('Required parameter schemaID was null or undefined when calling readOneAttribute.');
         }
 
         // verify required parameter 'attributeID' is not null or undefined
         if (attributeID === null || attributeID === undefined) {
-            throw new Error('Required parameter attributeID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPatch.');
+            throw new Error('Required parameter attributeID was null or undefined when calling readOneAttribute.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "SchemaAttribute");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary READ One Schema
+     * @param envID 
+     * @param schemaID 
+     */
+    public async readOneSchema (envID: string, schemaID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Schema;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling readOneSchema.');
+        }
+
+        // verify required parameter 'schemaID' is not null or undefined
+        if (schemaID === null || schemaID === undefined) {
+            throw new Error('Required parameter schemaID was null or undefined when calling readOneSchema.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Schema;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Schema");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary UPDATE Attribute (Patch)
+     * @param envID 
+     * @param schemaID 
+     * @param attributeID 
+     * @param contentType 
+     * @param schemaAttribute 
+     */
+    public async updateAttributePatch (envID: string, schemaID: string, attributeID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
+            .replace('{' + 'attributeID' + '}', encodeURIComponent(String(attributeID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling updateAttributePatch.');
+        }
+
+        // verify required parameter 'schemaID' is not null or undefined
+        if (schemaID === null || schemaID === undefined) {
+            throw new Error('Required parameter schemaID was null or undefined when calling updateAttributePatch.');
+        }
+
+        // verify required parameter 'attributeID' is not null or undefined
+        if (attributeID === null || attributeID === undefined) {
+            throw new Error('Required parameter attributeID was null or undefined when calling updateAttributePatch.');
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
@@ -387,7 +633,7 @@ export class ManagementAPIsSchemasApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
+            body: ObjectSerializer.serialize(schemaAttribute, "SchemaAttribute")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -431,9 +677,9 @@ export class ManagementAPIsSchemasApi {
      * @param schemaID 
      * @param attributeID 
      * @param contentType 
-     * @param body 
+     * @param schemaAttribute 
      */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut (envID: string, schemaID: string, attributeID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateAttributePut (envID: string, schemaID: string, attributeID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -451,17 +697,17 @@ export class ManagementAPIsSchemasApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut.');
+            throw new Error('Required parameter envID was null or undefined when calling updateAttributePut.');
         }
 
         // verify required parameter 'schemaID' is not null or undefined
         if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut.');
+            throw new Error('Required parameter schemaID was null or undefined when calling updateAttributePut.');
         }
 
         // verify required parameter 'attributeID' is not null or undefined
         if (attributeID === null || attributeID === undefined) {
-            throw new Error('Required parameter attributeID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesAttributeIDPut.');
+            throw new Error('Required parameter attributeID was null or undefined when calling updateAttributePut.');
         }
 
         localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
@@ -476,245 +722,7 @@ export class ManagementAPIsSchemasApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ All (Schema) Attributes
-     * @param envID 
-     * @param schemaID 
-     */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesGet (envID: string, schemaID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesGet.');
-        }
-
-        // verify required parameter 'schemaID' is not null or undefined
-        if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesGet.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary CREATE Attribute
-     * @param envID 
-     * @param schemaID 
-     * @param contentType 
-     * @param body 
-     */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDAttributesPost (envID: string, schemaID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesPost.');
-        }
-
-        // verify required parameter 'schemaID' is not null or undefined
-        if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDAttributesPost.');
-        }
-
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(body, "object")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ One Schema
-     * @param envID 
-     * @param schemaID 
-     */
-    public async v1EnvironmentsEnvIDSchemasSchemaIDGet (envID: string, schemaID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDGet.');
-        }
-
-        // verify required parameter 'schemaID' is not null or undefined
-        if (schemaID === null || schemaID === undefined) {
-            throw new Error('Required parameter schemaID was null or undefined when calling v1EnvironmentsEnvIDSchemasSchemaIDGet.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            body: ObjectSerializer.serialize(schemaAttribute, "SchemaAttribute")
         };
 
         let authenticationPromise = Promise.resolve();

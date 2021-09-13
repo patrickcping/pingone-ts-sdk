@@ -46,6 +46,9 @@ export * from './roleAssignment';
 export * from './roleAssignmentRole';
 export * from './roleAssignmentScope';
 export * from './rolePermissions';
+export * from './schema';
+export * from './schemaAttribute';
+export * from './schemaAttributeSchema';
 export * from './user';
 export * from './userAccount';
 export * from './userAddress';
@@ -120,6 +123,9 @@ import { RoleAssignment } from './roleAssignment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
 import { RoleAssignmentScope } from './roleAssignmentScope';
 import { RolePermissions } from './rolePermissions';
+import { Schema } from './schema';
+import { SchemaAttribute } from './schemaAttribute';
+import { SchemaAttributeSchema } from './schemaAttributeSchema';
 import { User } from './user';
 import { UserAccount } from './userAccount';
 import { UserAddress } from './userAddress';
@@ -179,6 +185,8 @@ let enumsMap: {[index: string]: any} = {
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
         "Resource.TypeEnum": Resource.TypeEnum,
         "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,
+        "SchemaAttribute.SchemaTypeEnum": SchemaAttribute.SchemaTypeEnum,
+        "SchemaAttribute.TypeEnum": SchemaAttribute.TypeEnum,
         "User.VerifyStatusEnum": User.VerifyStatusEnum,
 }
 
@@ -229,6 +237,9 @@ let typeMap: {[index: string]: any} = {
     "RoleAssignmentRole": RoleAssignmentRole,
     "RoleAssignmentScope": RoleAssignmentScope,
     "RolePermissions": RolePermissions,
+    "Schema": Schema,
+    "SchemaAttribute": SchemaAttribute,
+    "SchemaAttributeSchema": SchemaAttributeSchema,
     "User": User,
     "UserAccount": UserAccount,
     "UserAddress": UserAddress,
