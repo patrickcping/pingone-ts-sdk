@@ -15,6 +15,9 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
+import { Group } from '../model/group';
+import { InlineObject3 } from '../model/inlineObject3';
 import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -92,6 +95,87 @@ export class ManagementAPIsUsersGroupMembershipApi {
         this.interceptors.push(interceptor);
     }
 
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary ADD User to Group
+     * @param envID 
+     * @param userID 
+     * @param inlineObject3 
+     */
+    public async addUserToGroup (envID: string, userID: string, inlineObject3?: InlineObject3, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Group;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling addUserToGroup.');
+        }
+
+        // verify required parameter 'userID' is not null or undefined
+        if (userID === null || userID === undefined) {
+            throw new Error('Required parameter userID was null or undefined when calling addUserToGroup.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(inlineObject3, "InlineObject3")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Group;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Group");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary READ All Group IDs for User
@@ -184,7 +268,7 @@ export class ManagementAPIsUsersGroupMembershipApi {
      * @param limit 
      * @param filter 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet (envID: string, userID: string, expand?: string, limit?: number, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readAllGroupMembershipsForUser (envID: string, userID: string, expand?: string, limit?: number, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -201,12 +285,12 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllGroupMembershipsForUser.');
         }
 
         // verify required parameter 'userID' is not null or undefined
         if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGet.');
+            throw new Error('Required parameter userID was null or undefined when calling readAllGroupMembershipsForUser.');
         }
 
         if (expand !== undefined) {
@@ -253,96 +337,12 @@ export class ManagementAPIsUsersGroupMembershipApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary REMOVE User from Group
-     * @param envID 
-     * @param userID 
-     * @param groupID 
-     */
-    public async v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete (envID: string, userID: string, groupID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
-            .replace('{' + 'groupID' + '}', encodeURIComponent(String(groupID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete.');
-        }
-
-        // verify required parameter 'userID' is not null or undefined
-        if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete.');
-        }
-
-        // verify required parameter 'groupID' is not null or undefined
-        if (groupID === null || groupID === undefined) {
-            throw new Error('Required parameter groupID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDDelete.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -361,7 +361,7 @@ export class ManagementAPIsUsersGroupMembershipApi {
      * @param groupID 
      * @param expand 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet (envID: string, userID: string, groupID: string, expand?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneGroupMembershipForUser (envID: string, userID: string, groupID: string, expand?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Group;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
@@ -379,17 +379,17 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneGroupMembershipForUser.');
         }
 
         // verify required parameter 'userID' is not null or undefined
         if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet.');
+            throw new Error('Required parameter userID was null or undefined when calling readOneGroupMembershipForUser.');
         }
 
         // verify required parameter 'groupID' is not null or undefined
         if (groupID === null || groupID === undefined) {
-            throw new Error('Required parameter groupID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsGroupIDGet.');
+            throw new Error('Required parameter groupID was null or undefined when calling readOneGroupMembershipForUser.');
         }
 
         if (expand !== undefined) {
@@ -428,11 +428,12 @@ export class ManagementAPIsUsersGroupMembershipApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Group;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Group");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -445,15 +446,16 @@ export class ManagementAPIsUsersGroupMembershipApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary ADD User to Group
+     * @summary REMOVE User from Group
      * @param envID 
      * @param userID 
-     * @param body 
+     * @param groupID 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost (envID: string, userID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups'
+    public async removeUserFromGroup (envID: string, userID: string, groupID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/memberOfGroups/{groupID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
+            .replace('{' + 'groupID' + '}', encodeURIComponent(String(groupID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -467,12 +469,17 @@ export class ManagementAPIsUsersGroupMembershipApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost.');
+            throw new Error('Required parameter envID was null or undefined when calling removeUserFromGroup.');
         }
 
         // verify required parameter 'userID' is not null or undefined
         if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMemberOfGroupsPost.');
+            throw new Error('Required parameter userID was null or undefined when calling removeUserFromGroup.');
+        }
+
+        // verify required parameter 'groupID' is not null or undefined
+        if (groupID === null || groupID === undefined) {
+            throw new Error('Required parameter groupID was null or undefined when calling removeUserFromGroup.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -480,13 +487,12 @@ export class ManagementAPIsUsersGroupMembershipApi {
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
+            method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
         };
 
         let authenticationPromise = Promise.resolve();

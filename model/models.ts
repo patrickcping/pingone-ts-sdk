@@ -35,12 +35,35 @@ export * from './groupDirectMemberCounts';
 export * from './groupMembership';
 export * from './groupTotalMemberCounts';
 export * from './inlineObject2';
+export * from './inlineObject3';
 export * from './objectEnvironment';
 export * from './objectPopulation';
 export * from './p1Error';
 export * from './p1ErrorDetails';
 export * from './population';
 export * from './resource';
+export * from './riskEvaluation';
+export * from './riskEvaluationDetails';
+export * from './riskEvaluationDetailsIpAddressReputation';
+export * from './riskEvaluationDetailsIpVelocityByUser';
+export * from './riskEvaluationDetailsIpVelocityByUserThreshold';
+export * from './riskEvaluationDetailsIpVelocityByUserVelocity';
+export * from './riskEvaluationDetailsPreviousSuccessfulTransaction';
+export * from './riskEvaluationDetailsUserBasedRiskBehavior';
+export * from './riskEvaluationDetailsUserRiskBehavior';
+export * from './riskEvaluationDetailsUserVelocityByIp';
+export * from './riskEvaluationDetailsUserVelocityByIpThreshold';
+export * from './riskEvaluationDetailsUserVelocityByIpVelocity';
+export * from './riskEvaluationEvent';
+export * from './riskEvaluationEventBrowser';
+export * from './riskEvaluationEventEvaluatedFactors';
+export * from './riskEvaluationEventFlow';
+export * from './riskEvaluationEventSession';
+export * from './riskEvaluationEventTargetResource';
+export * from './riskEvaluationEventUser';
+export * from './riskEvaluationEventUserGroups';
+export * from './riskEvaluationResult';
+export * from './riskEvaluationRiskPolicySet';
 export * from './role';
 export * from './roleAssignment';
 export * from './roleAssignmentRole';
@@ -112,12 +135,35 @@ import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
 import { GroupMembership } from './groupMembership';
 import { GroupTotalMemberCounts } from './groupTotalMemberCounts';
 import { InlineObject2 } from './inlineObject2';
+import { InlineObject3 } from './inlineObject3';
 import { ObjectEnvironment } from './objectEnvironment';
 import { ObjectPopulation } from './objectPopulation';
 import { P1Error } from './p1Error';
 import { P1ErrorDetails } from './p1ErrorDetails';
 import { Population } from './population';
 import { Resource } from './resource';
+import { RiskEvaluation } from './riskEvaluation';
+import { RiskEvaluationDetails } from './riskEvaluationDetails';
+import { RiskEvaluationDetailsIpAddressReputation } from './riskEvaluationDetailsIpAddressReputation';
+import { RiskEvaluationDetailsIpVelocityByUser } from './riskEvaluationDetailsIpVelocityByUser';
+import { RiskEvaluationDetailsIpVelocityByUserThreshold } from './riskEvaluationDetailsIpVelocityByUserThreshold';
+import { RiskEvaluationDetailsIpVelocityByUserVelocity } from './riskEvaluationDetailsIpVelocityByUserVelocity';
+import { RiskEvaluationDetailsPreviousSuccessfulTransaction } from './riskEvaluationDetailsPreviousSuccessfulTransaction';
+import { RiskEvaluationDetailsUserBasedRiskBehavior } from './riskEvaluationDetailsUserBasedRiskBehavior';
+import { RiskEvaluationDetailsUserRiskBehavior } from './riskEvaluationDetailsUserRiskBehavior';
+import { RiskEvaluationDetailsUserVelocityByIp } from './riskEvaluationDetailsUserVelocityByIp';
+import { RiskEvaluationDetailsUserVelocityByIpThreshold } from './riskEvaluationDetailsUserVelocityByIpThreshold';
+import { RiskEvaluationDetailsUserVelocityByIpVelocity } from './riskEvaluationDetailsUserVelocityByIpVelocity';
+import { RiskEvaluationEvent } from './riskEvaluationEvent';
+import { RiskEvaluationEventBrowser } from './riskEvaluationEventBrowser';
+import { RiskEvaluationEventEvaluatedFactors } from './riskEvaluationEventEvaluatedFactors';
+import { RiskEvaluationEventFlow } from './riskEvaluationEventFlow';
+import { RiskEvaluationEventSession } from './riskEvaluationEventSession';
+import { RiskEvaluationEventTargetResource } from './riskEvaluationEventTargetResource';
+import { RiskEvaluationEventUser } from './riskEvaluationEventUser';
+import { RiskEvaluationEventUserGroups } from './riskEvaluationEventUserGroups';
+import { RiskEvaluationResult } from './riskEvaluationResult';
+import { RiskEvaluationRiskPolicySet } from './riskEvaluationRiskPolicySet';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
@@ -184,6 +230,19 @@ let enumsMap: {[index: string]: any} = {
         "Environment.TypeEnum": Environment.TypeEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
         "Resource.TypeEnum": Resource.TypeEnum,
+        "RiskEvaluationDetailsIpAddressReputation.LevelEnum": RiskEvaluationDetailsIpAddressReputation.LevelEnum,
+        "RiskEvaluationDetailsIpVelocityByUser.LevelEnum": RiskEvaluationDetailsIpVelocityByUser.LevelEnum,
+        "RiskEvaluationDetailsIpVelocityByUserThreshold.SourceEnum": RiskEvaluationDetailsIpVelocityByUserThreshold.SourceEnum,
+        "RiskEvaluationDetailsUserBasedRiskBehavior.LevelEnum": RiskEvaluationDetailsUserBasedRiskBehavior.LevelEnum,
+        "RiskEvaluationDetailsUserRiskBehavior.LevelEnum": RiskEvaluationDetailsUserRiskBehavior.LevelEnum,
+        "RiskEvaluationDetailsUserVelocityByIp.LevelEnum": RiskEvaluationDetailsUserVelocityByIp.LevelEnum,
+        "RiskEvaluationDetailsUserVelocityByIpThreshold.SourceEnum": RiskEvaluationDetailsUserVelocityByIpThreshold.SourceEnum,
+        "RiskEvaluationEvent.CompletionStatusEnum": RiskEvaluationEvent.CompletionStatusEnum,
+        "RiskEvaluationEvent.SharingTypeEnum": RiskEvaluationEvent.SharingTypeEnum,
+        "RiskEvaluationEventEvaluatedFactors.StatusEnum": RiskEvaluationEventEvaluatedFactors.StatusEnum,
+        "RiskEvaluationEventFlow.TypeEnum": RiskEvaluationEventFlow.TypeEnum,
+        "RiskEvaluationResult.TypeEnum": RiskEvaluationResult.TypeEnum,
+        "RiskEvaluationResult.LevelEnum": RiskEvaluationResult.LevelEnum,
         "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,
         "SchemaAttribute.SchemaTypeEnum": SchemaAttribute.SchemaTypeEnum,
         "SchemaAttribute.TypeEnum": SchemaAttribute.TypeEnum,
@@ -226,12 +285,35 @@ let typeMap: {[index: string]: any} = {
     "GroupMembership": GroupMembership,
     "GroupTotalMemberCounts": GroupTotalMemberCounts,
     "InlineObject2": InlineObject2,
+    "InlineObject3": InlineObject3,
     "ObjectEnvironment": ObjectEnvironment,
     "ObjectPopulation": ObjectPopulation,
     "P1Error": P1Error,
     "P1ErrorDetails": P1ErrorDetails,
     "Population": Population,
     "Resource": Resource,
+    "RiskEvaluation": RiskEvaluation,
+    "RiskEvaluationDetails": RiskEvaluationDetails,
+    "RiskEvaluationDetailsIpAddressReputation": RiskEvaluationDetailsIpAddressReputation,
+    "RiskEvaluationDetailsIpVelocityByUser": RiskEvaluationDetailsIpVelocityByUser,
+    "RiskEvaluationDetailsIpVelocityByUserThreshold": RiskEvaluationDetailsIpVelocityByUserThreshold,
+    "RiskEvaluationDetailsIpVelocityByUserVelocity": RiskEvaluationDetailsIpVelocityByUserVelocity,
+    "RiskEvaluationDetailsPreviousSuccessfulTransaction": RiskEvaluationDetailsPreviousSuccessfulTransaction,
+    "RiskEvaluationDetailsUserBasedRiskBehavior": RiskEvaluationDetailsUserBasedRiskBehavior,
+    "RiskEvaluationDetailsUserRiskBehavior": RiskEvaluationDetailsUserRiskBehavior,
+    "RiskEvaluationDetailsUserVelocityByIp": RiskEvaluationDetailsUserVelocityByIp,
+    "RiskEvaluationDetailsUserVelocityByIpThreshold": RiskEvaluationDetailsUserVelocityByIpThreshold,
+    "RiskEvaluationDetailsUserVelocityByIpVelocity": RiskEvaluationDetailsUserVelocityByIpVelocity,
+    "RiskEvaluationEvent": RiskEvaluationEvent,
+    "RiskEvaluationEventBrowser": RiskEvaluationEventBrowser,
+    "RiskEvaluationEventEvaluatedFactors": RiskEvaluationEventEvaluatedFactors,
+    "RiskEvaluationEventFlow": RiskEvaluationEventFlow,
+    "RiskEvaluationEventSession": RiskEvaluationEventSession,
+    "RiskEvaluationEventTargetResource": RiskEvaluationEventTargetResource,
+    "RiskEvaluationEventUser": RiskEvaluationEventUser,
+    "RiskEvaluationEventUserGroups": RiskEvaluationEventUserGroups,
+    "RiskEvaluationResult": RiskEvaluationResult,
+    "RiskEvaluationRiskPolicySet": RiskEvaluationRiskPolicySet,
     "Role": Role,
     "RoleAssignment": RoleAssignment,
     "RoleAssignmentRole": RoleAssignmentRole,
