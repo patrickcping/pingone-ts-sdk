@@ -98,10 +98,9 @@ export class ManagementAPIsEnvironmentsApi {
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Environment (Active License)
-     * @param contentType 
      * @param environment 
      */
-    public async createEnvironmentActiveLicense (contentType?: string, environment?: Environment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Environment;  }> {
+    public async createEnvironmentActiveLicense (environment?: Environment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Environment;  }> {
         const localVarPath = this.basePath + '/v1/environments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -114,7 +113,6 @@ export class ManagementAPIsEnvironmentsApi {
         }
         let localVarFormParams: any = {};
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -386,10 +384,9 @@ export class ManagementAPIsEnvironmentsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Environment
      * @param envID 
-     * @param contentType 
      * @param environment 
      */
-    public async updateEnvironment (envID: string, contentType?: string, environment?: Environment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateEnvironment (envID: string, environment?: Environment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Environment;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -408,7 +405,6 @@ export class ManagementAPIsEnvironmentsApi {
             throw new Error('Required parameter envID was null or undefined when calling updateEnvironment.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -442,11 +438,12 @@ export class ManagementAPIsEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Environment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Environment");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -461,10 +458,9 @@ export class ManagementAPIsEnvironmentsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Environment Type
      * @param envID 
-     * @param contentType 
      * @param inlineObject2 
      */
-    public async updateEnvironmentType (envID: string, contentType?: string, inlineObject2?: InlineObject2, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateEnvironmentType (envID: string, inlineObject2?: InlineObject2, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Environment;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/type'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -483,7 +479,6 @@ export class ManagementAPIsEnvironmentsApi {
             throw new Error('Required parameter envID was null or undefined when calling updateEnvironmentType.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -517,11 +512,12 @@ export class ManagementAPIsEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Environment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Environment");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

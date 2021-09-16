@@ -56,11 +56,11 @@ export class User {
     /**
     * A read-only array of IDs for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include=memberOfGroupIDs is appended to the request. This property is not returned with a list of users.
     */
-    'memberOfGroupIDs'?: string;
+    'memberOfGroupIDs'?: Array<string>;
     /**
     * A read-only array of names for the groups the user is a member of. This property is returned for GET /environments/{envID}/users/{userID} when include=memberOfGroupNames is appended to the request. This property is not returned with a list of users.
     */
-    'memberOfGroupNames'?: string;
+    'memberOfGroupNames'?: Array<string>;
     /**
     * A boolean attribute that specifies whether multi-factor authentication is enabled. This attribute is set to false by default when the user is created. You can set mfaEnabled to true with POST CREATE User, POST CREATE User (Import), or PUT UPDATE User MFA Enabled. You cannot update mfaEnabled with PUT UPDATE User or PATCH UPDATE User.
     */
@@ -176,12 +176,12 @@ export class User {
         {
             "name": "memberOfGroupIDs",
             "baseName": "memberOfGroupIDs",
-            "type": "string"
+            "type": "Array<string>"
         },
         {
             "name": "memberOfGroupNames",
             "baseName": "memberOfGroupNames",
-            "type": "string"
+            "type": "Array<string>"
         },
         {
             "name": "mfaEnabled",

@@ -253,8 +253,9 @@ export class ManagementAPIsUsersUsersApi {
      * @summary READ All Users
      * @param envID 
      * @param filter 
+     * @param limit 
      */
-    public async readAllUsers (envID: string, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+    public async readAllUsers (envID: string, filter?: string, limit?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -275,6 +276,10 @@ export class ManagementAPIsUsersUsersApi {
 
         if (filter !== undefined) {
             localVarQueryParameters['filter'] = ObjectSerializer.serialize(filter, "string");
+        }
+
+        if (limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -327,13 +332,96 @@ export class ManagementAPIsUsersUsersApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary READ User
+     * @param envID 
+     * @param userID 
+     * @param include 
+     */
+    public async readUser (envID: string, userID: string, include?: 'memberOfGroupIDs' | 'memberOfGroupNames', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling readUser.');
+        }
+
+        // verify required parameter 'userID' is not null or undefined
+        if (userID === null || userID === undefined) {
+            throw new Error('Required parameter userID was null or undefined when calling readUser.');
+        }
+
+        if (include !== undefined) {
+            localVarQueryParameters['include'] = ObjectSerializer.serialize(include, "'memberOfGroupIDs' | 'memberOfGroupNames'");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "User");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE User (Patch)
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param user 
      */
-    public async updateUserPatch (envID: string, userID: string, contentType?: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateUserPatch (envID: string, userID: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -358,7 +446,6 @@ export class ManagementAPIsUsersUsersApi {
             throw new Error('Required parameter userID was null or undefined when calling updateUserPatch.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -392,11 +479,12 @@ export class ManagementAPIsUsersUsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "User");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -412,10 +500,9 @@ export class ManagementAPIsUsersUsersApi {
      * @summary UPDATE User (Put)
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param user 
      */
-    public async updateUserPut (envID: string, userID: string, contentType?: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateUserPut (envID: string, userID: string, user?: User, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -440,7 +527,6 @@ export class ManagementAPIsUsersUsersApi {
             throw new Error('Required parameter userID was null or undefined when calling updateUserPut.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -474,11 +560,12 @@ export class ManagementAPIsUsersUsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "User");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -572,10 +659,9 @@ export class ManagementAPIsUsersUsersApi {
      * @summary UPDATE User Identity Provider
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDIdentityProviderPut (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDIdentityProviderPut (envID: string, userID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/identityProvider'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -600,7 +686,6 @@ export class ManagementAPIsUsersUsersApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDIdentityProviderPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -654,9 +739,8 @@ export class ManagementAPIsUsersUsersApi {
      * @summary READ user verification status
      * @param envID 
      * @param userID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDVerifyStatusGet (envID: string, userID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDVerifyStatusGet (envID: string, userID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/verifyStatus'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -681,7 +765,6 @@ export class ManagementAPIsUsersUsersApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDVerifyStatusGet.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -734,10 +817,9 @@ export class ManagementAPIsUsersUsersApi {
      * @summary UPDATE user verification status
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDVerifyStatusPut (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDVerifyStatusPut (envID: string, userID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/verifyStatus'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -762,7 +844,6 @@ export class ManagementAPIsUsersUsersApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDVerifyStatusPut.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

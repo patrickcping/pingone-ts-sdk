@@ -399,10 +399,9 @@ export class ManagementAPIsIdentityProviderManagementIdentityProvidersApi {
      * @summary UPDATE Identity Provider
      * @param envID 
      * @param providerID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDIdentityProvidersProviderIDPut (envID: string, providerID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDIdentityProvidersProviderIDPut (envID: string, providerID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/identityProviders/{providerID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'providerID' + '}', encodeURIComponent(String(providerID)));
@@ -427,7 +426,6 @@ export class ManagementAPIsIdentityProviderManagementIdentityProvidersApi {
             throw new Error('Required parameter providerID was null or undefined when calling v1EnvironmentsEnvIDIdentityProvidersProviderIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

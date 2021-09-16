@@ -97,10 +97,9 @@ export class ManagementAPIsDeviceAuthenticationPolicyApi {
      * @summary UPDATE Device Authentication Policy
      * @param envID 
      * @param deviceAuthPolicyID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut (envID: string, deviceAuthPolicyID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut (envID: string, deviceAuthPolicyID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/deviceAuthenticationPolicy/{deviceAuthPolicyID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'deviceAuthPolicyID' + '}', encodeURIComponent(String(deviceAuthPolicyID)));
@@ -125,7 +124,6 @@ export class ManagementAPIsDeviceAuthenticationPolicyApi {
             throw new Error('Required parameter deviceAuthPolicyID was null or undefined when calling v1EnvironmentsEnvIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

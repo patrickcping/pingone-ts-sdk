@@ -169,11 +169,10 @@ export class ManagementAPIsBrandingBrandingSettingsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Branding Settings
      * @param envID 
-     * @param contentType 
      * @param authorization 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDBrandingSettingsPut (envID: string, contentType?: string, authorization?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDBrandingSettingsPut (envID: string, authorization?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/brandingSettings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -192,7 +191,6 @@ export class ManagementAPIsBrandingBrandingSettingsApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDBrandingSettingsPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         localVarHeaderParams['Authorization'] = ObjectSerializer.serialize(authorization, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 

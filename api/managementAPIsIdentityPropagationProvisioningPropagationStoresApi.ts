@@ -244,10 +244,9 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Store (Aquera)
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDPropagationStoresPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDPropagationStoresPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/propagation/stores'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -266,7 +265,6 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDPropagationStoresPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -480,10 +478,9 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi {
      * @summary UPDATE Store
      * @param envID 
      * @param storeID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDPropagationStoresStoreIDPut (envID: string, storeID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDPropagationStoresStoreIDPut (envID: string, storeID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/propagation/stores/{storeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'storeID' + '}', encodeURIComponent(String(storeID)));
@@ -508,7 +505,6 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationStoresApi {
             throw new Error('Required parameter storeID was null or undefined when calling v1EnvironmentsEnvIDPropagationStoresStoreIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

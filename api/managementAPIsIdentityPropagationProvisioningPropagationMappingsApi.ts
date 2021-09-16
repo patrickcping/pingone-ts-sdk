@@ -257,10 +257,9 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi
      * @summary UPDATE Mapping
      * @param envID 
      * @param mappingID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDPropagationMappingsMappingIDPut (envID: string, mappingID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDPropagationMappingsMappingIDPut (envID: string, mappingID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/propagation/mappings/{mappingID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'mappingID' + '}', encodeURIComponent(String(mappingID)));
@@ -285,7 +284,6 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi
             throw new Error('Required parameter mappingID was null or undefined when calling v1EnvironmentsEnvIDPropagationMappingsMappingIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -421,10 +419,9 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi
      * @summary CREATE Rule Mapping
      * @param envID 
      * @param ruleID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost (envID: string, ruleID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost (envID: string, ruleID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/propagation/rules/{ruleID}/mappings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'ruleID' + '}', encodeURIComponent(String(ruleID)));
@@ -449,7 +446,6 @@ export class ManagementAPIsIdentityPropagationProvisioningPropagationMappingsApi
             throw new Error('Required parameter ruleID was null or undefined when calling v1EnvironmentsEnvIDPropagationRulesRuleIDMappingsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

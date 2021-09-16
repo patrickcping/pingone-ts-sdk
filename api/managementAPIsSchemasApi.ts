@@ -100,10 +100,9 @@ export class ManagementAPIsSchemasApi {
      * @summary CREATE Attribute
      * @param envID 
      * @param schemaID 
-     * @param contentType 
      * @param schemaAttribute 
      */
-    public async createAttribute (envID: string, schemaID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
+    public async createAttribute (envID: string, schemaID: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)));
@@ -128,7 +127,6 @@ export class ManagementAPIsSchemasApi {
             throw new Error('Required parameter schemaID was null or undefined when calling createAttribute.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -184,9 +182,8 @@ export class ManagementAPIsSchemasApi {
      * @param envID 
      * @param schemaID 
      * @param attributeID 
-     * @param contentType 
      */
-    public async deleteAttribute (envID: string, schemaID: string, attributeID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteAttribute (envID: string, schemaID: string, attributeID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -217,7 +214,6 @@ export class ManagementAPIsSchemasApi {
             throw new Error('Required parameter attributeID was null or undefined when calling deleteAttribute.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -587,10 +583,9 @@ export class ManagementAPIsSchemasApi {
      * @param envID 
      * @param schemaID 
      * @param attributeID 
-     * @param contentType 
      * @param schemaAttribute 
      */
-    public async updateAttributePatch (envID: string, schemaID: string, attributeID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateAttributePatch (envID: string, schemaID: string, attributeID: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -621,7 +616,6 @@ export class ManagementAPIsSchemasApi {
             throw new Error('Required parameter attributeID was null or undefined when calling updateAttributePatch.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -655,11 +649,12 @@ export class ManagementAPIsSchemasApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "SchemaAttribute");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -676,10 +671,9 @@ export class ManagementAPIsSchemasApi {
      * @param envID 
      * @param schemaID 
      * @param attributeID 
-     * @param contentType 
      * @param schemaAttribute 
      */
-    public async updateAttributePut (envID: string, schemaID: string, attributeID: string, contentType?: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateAttributePut (envID: string, schemaID: string, attributeID: string, schemaAttribute?: SchemaAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/schemas/{schemaID}/attributes/{attributeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'schemaID' + '}', encodeURIComponent(String(schemaID)))
@@ -710,7 +704,6 @@ export class ManagementAPIsSchemasApi {
             throw new Error('Required parameter attributeID was null or undefined when calling updateAttributePut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -744,11 +737,12 @@ export class ManagementAPIsSchemasApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: SchemaAttribute;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "SchemaAttribute");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

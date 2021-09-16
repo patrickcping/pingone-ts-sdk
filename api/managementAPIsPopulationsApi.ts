@@ -99,9 +99,8 @@ export class ManagementAPIsPopulationsApi {
      * @summary CREATE Population
      * @param envID 
      * @param population 
-     * @param contentType 
      */
-    public async createPopulation (envID: string, population: Population, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Population;  }> {
+    public async createPopulation (envID: string, population: Population, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Population;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/populations'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -125,7 +124,6 @@ export class ManagementAPIsPopulationsApi {
             throw new Error('Required parameter population was null or undefined when calling createPopulation.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -419,10 +417,9 @@ export class ManagementAPIsPopulationsApi {
      * @summary UPDATE Population
      * @param envID 
      * @param popID 
-     * @param contentType 
      * @param population 
      */
-    public async updatePopulation (envID: string, popID: string, contentType?: string, population?: Population, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updatePopulation (envID: string, popID: string, population?: Population, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Population;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/populations/{popID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'popID' + '}', encodeURIComponent(String(popID)));
@@ -447,7 +444,6 @@ export class ManagementAPIsPopulationsApi {
             throw new Error('Required parameter popID was null or undefined when calling updatePopulation.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -481,11 +477,12 @@ export class ManagementAPIsPopulationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Population;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Population");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

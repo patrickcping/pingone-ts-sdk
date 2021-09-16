@@ -183,9 +183,8 @@ export class ManagementAPIsUsersMFAPairingKeysApi {
      * @param envID 
      * @param userID 
      * @param pairingKeyID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet (envID: string, userID: string, pairingKeyID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet (envID: string, userID: string, pairingKeyID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
@@ -216,7 +215,6 @@ export class ManagementAPIsUsersMFAPairingKeysApi {
             throw new Error('Required parameter pairingKeyID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -269,10 +267,9 @@ export class ManagementAPIsUsersMFAPairingKeysApi {
      * @summary CREATE MFA Pairing Key
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDPairingKeysPost (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDPairingKeysPost (envID: string, userID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/pairingKeys'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -297,7 +294,6 @@ export class ManagementAPIsUsersMFAPairingKeysApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPairingKeysPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

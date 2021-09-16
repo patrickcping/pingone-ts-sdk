@@ -485,10 +485,9 @@ export class ManagementAPIsCertificateManagementApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary DECRYPT Data
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDDecryptionsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDDecryptionsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/decryptions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -507,7 +506,6 @@ export class ManagementAPIsCertificateManagementApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDDecryptionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -560,10 +558,9 @@ export class ManagementAPIsCertificateManagementApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary ENCRYPT Data
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDEncryptionsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDEncryptionsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/encryptions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -582,7 +579,6 @@ export class ManagementAPIsCertificateManagementApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDEncryptionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1103,10 +1099,9 @@ export class ManagementAPIsCertificateManagementApi {
      * @summary UPDATE Key
      * @param envID 
      * @param keyID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDKeysKeyIDPut (envID: string, keyID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDKeysKeyIDPut (envID: string, keyID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/keys/{keyID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'keyID' + '}', encodeURIComponent(String(keyID)));
@@ -1131,7 +1126,6 @@ export class ManagementAPIsCertificateManagementApi {
             throw new Error('Required parameter keyID was null or undefined when calling v1EnvironmentsEnvIDKeysKeyIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1268,10 +1262,9 @@ export class ManagementAPIsCertificateManagementApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary SIGN Data
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDSigningsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDSigningsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/signings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -1290,7 +1283,6 @@ export class ManagementAPIsCertificateManagementApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSigningsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1343,10 +1335,9 @@ export class ManagementAPIsCertificateManagementApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary VERIFY Signed Data
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDVerificationsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDVerificationsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/verifications'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -1365,7 +1356,6 @@ export class ManagementAPIsCertificateManagementApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDVerificationsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

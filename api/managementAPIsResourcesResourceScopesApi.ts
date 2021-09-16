@@ -175,10 +175,9 @@ export class ManagementAPIsResourcesResourceScopesApi {
      * @summary CREATE PingOne access control scope
      * @param envID 
      * @param resourceID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDResourcesResourceIDScopesPost (envID: string, resourceID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDResourcesResourceIDScopesPost (envID: string, resourceID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources/{resourceID}/scopes'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'resourceID' + '}', encodeURIComponent(String(resourceID)));
@@ -203,7 +202,6 @@ export class ManagementAPIsResourcesResourceScopesApi {
             throw new Error('Required parameter resourceID was null or undefined when calling v1EnvironmentsEnvIDResourcesResourceIDScopesPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -428,10 +426,9 @@ export class ManagementAPIsResourcesResourceScopesApi {
      * @param envID 
      * @param resourceID 
      * @param scopeID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut (envID: string, resourceID: string, scopeID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut (envID: string, resourceID: string, scopeID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources/{resourceID}/scopes/{scopeID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'resourceID' + '}', encodeURIComponent(String(resourceID)))
@@ -462,7 +459,6 @@ export class ManagementAPIsResourcesResourceScopesApi {
             throw new Error('Required parameter scopeID was null or undefined when calling v1EnvironmentsEnvIDResourcesResourceIDScopesScopeIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

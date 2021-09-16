@@ -169,10 +169,9 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Bill of Materials
      * @param envID 
-     * @param contentType 
      * @param billOfMaterials 
      */
-    public async updateBillOfMaterials (envID: string, contentType?: string, billOfMaterials?: BillOfMaterials, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }> {
+    public async updateBillOfMaterials (envID: string, billOfMaterials?: BillOfMaterials, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: BillOfMaterials;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/billOfMaterials'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -191,7 +190,6 @@ export class ManagementAPIsBillOfMaterialsBOMApi {
             throw new Error('Required parameter envID was null or undefined when calling updateBillOfMaterials.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

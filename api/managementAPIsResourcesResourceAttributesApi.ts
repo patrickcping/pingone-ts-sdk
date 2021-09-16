@@ -175,10 +175,9 @@ export class ManagementAPIsResourcesResourceAttributesApi {
      * @summary CREATE Resource Attribute
      * @param envID 
      * @param resourceID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDResourcesResourceIDAttributesPost (envID: string, resourceID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDResourcesResourceIDAttributesPost (envID: string, resourceID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources/{resourceID}/attributes'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'resourceID' + '}', encodeURIComponent(String(resourceID)));
@@ -203,7 +202,6 @@ export class ManagementAPIsResourcesResourceAttributesApi {
             throw new Error('Required parameter resourceID was null or undefined when calling v1EnvironmentsEnvIDResourcesResourceIDAttributesPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -428,10 +426,9 @@ export class ManagementAPIsResourcesResourceAttributesApi {
      * @param envID 
      * @param resourceID 
      * @param resourceAttrID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut (envID: string, resourceID: string, resourceAttrID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut (envID: string, resourceID: string, resourceAttrID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources/{resourceID}/attributes/{resourceAttrID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'resourceID' + '}', encodeURIComponent(String(resourceID)))
@@ -462,7 +459,6 @@ export class ManagementAPIsResourcesResourceAttributesApi {
             throw new Error('Required parameter resourceAttrID was null or undefined when calling v1EnvironmentsEnvIDResourcesResourceIDAttributesResourceAttrIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

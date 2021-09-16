@@ -96,10 +96,9 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Sign-On Policy Action (AGREEMENT)
      * @param policyID 
-     * @param contentType 
      * @param body 
      */
-    public async v1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost (policyID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost (policyID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/9ad15e9e-3ac6-43f7-a053-d46b87d6c4a7/signOnPolicies/{policyID}/actions'
             .replace('{' + 'policyID' + '}', encodeURIComponent(String(policyID)));
         let localVarQueryParameters: any = {};
@@ -118,7 +117,6 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
             throw new Error('Required parameter policyID was null or undefined when calling v1Environments9ad15e9e3ac643f7A053D46b87d6c4a7SignOnPoliciesPolicyIDActionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -343,10 +341,9 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
      * @param envID 
      * @param policyID 
      * @param actionID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut (envID: string, policyID: string, actionID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut (envID: string, policyID: string, actionID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/signOnPolicies/{policyID}/actions/{actionID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'policyID' + '}', encodeURIComponent(String(policyID)))
@@ -377,7 +374,6 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
             throw new Error('Required parameter actionID was null or undefined when calling v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsActionIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -509,10 +505,9 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
      * @summary CREATE Sign-On Policy Action (IDENTITY_PROVIDER)
      * @param envID 
      * @param policyID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost (envID: string, policyID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost (envID: string, policyID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/signOnPolicies/{policyID}/actions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'policyID' + '}', encodeURIComponent(String(policyID)));
@@ -537,7 +532,6 @@ export class ManagementAPIsSignOnPoliciesSignOnPolicyActionsApi {
             throw new Error('Required parameter policyID was null or undefined when calling v1EnvironmentsEnvIDSignOnPoliciesPolicyIDActionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

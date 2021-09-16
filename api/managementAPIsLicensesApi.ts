@@ -324,10 +324,9 @@ export class ManagementAPIsLicensesApi {
      * @summary Update One License Name
      * @param orgID 
      * @param licenseID 
-     * @param contentType 
      * @param body 
      */
-    public async v1OrganizationsOrgIDLicensesLicenseIDNamePut (orgID: string, licenseID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1OrganizationsOrgIDLicensesLicenseIDNamePut (orgID: string, licenseID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/organizations/{orgID}/licenses/{licenseID}/name'
             .replace('{' + 'orgID' + '}', encodeURIComponent(String(orgID)))
             .replace('{' + 'licenseID' + '}', encodeURIComponent(String(licenseID)));
@@ -352,7 +351,6 @@ export class ManagementAPIsLicensesApi {
             throw new Error('Required parameter licenseID was null or undefined when calling v1OrganizationsOrgIDLicensesLicenseIDNamePut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

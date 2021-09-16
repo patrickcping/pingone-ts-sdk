@@ -98,10 +98,9 @@ export class ManagementAPIsResourcesResourcesApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Resource
      * @param envID 
-     * @param contentType 
      * @param resource 
      */
-    public async createResource (envID: string, contentType?: string, resource?: Resource, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Resource;  }> {
+    public async createResource (envID: string, resource?: Resource, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Resource;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -120,7 +119,6 @@ export class ManagementAPIsResourcesResourcesApi {
             throw new Error('Required parameter envID was null or undefined when calling createResource.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -325,10 +323,9 @@ export class ManagementAPIsResourcesResourcesApi {
      * @summary UPDATE Resource
      * @param envID 
      * @param resourceID 
-     * @param contentType 
      * @param resource 
      */
-    public async updateResource (envID: string, resourceID: string, contentType?: string, resource?: Resource, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateResource (envID: string, resourceID: string, resource?: Resource, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Resource;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/resources/{resourceID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'resourceID' + '}', encodeURIComponent(String(resourceID)));
@@ -353,7 +350,6 @@ export class ManagementAPIsResourcesResourcesApi {
             throw new Error('Required parameter resourceID was null or undefined when calling updateResource.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -387,11 +383,12 @@ export class ManagementAPIsResourcesResourcesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Resource;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Resource");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

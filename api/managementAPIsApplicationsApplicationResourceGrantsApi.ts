@@ -99,10 +99,9 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
      * @summary CREATE Grant
      * @param envID 
      * @param appID 
-     * @param contentType 
      * @param applicationResourceGrant 
      */
-    public async createGrant (envID: string, appID: string, contentType?: string, applicationResourceGrant?: ApplicationResourceGrant, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
+    public async createGrant (envID: string, appID: string, applicationResourceGrant?: ApplicationResourceGrant, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -127,7 +126,6 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
             throw new Error('Required parameter appID was null or undefined when calling createGrant.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -432,10 +430,9 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
      * @param envID 
      * @param appID 
      * @param grantID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut (envID: string, appID: string, grantID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut (envID: string, appID: string, grantID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants/{grantID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
@@ -466,7 +463,6 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
             throw new Error('Required parameter grantID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

@@ -97,9 +97,8 @@ export class ManagementAPIsUsersUserPasswordsApi {
      * @summary READ Password State
      * @param envID 
      * @param userID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDPasswordGet (envID: string, userID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDPasswordGet (envID: string, userID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/password'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -124,7 +123,6 @@ export class ManagementAPIsUsersUserPasswordsApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDPasswordGet.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

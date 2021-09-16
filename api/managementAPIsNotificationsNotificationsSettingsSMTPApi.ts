@@ -167,10 +167,9 @@ export class ManagementAPIsNotificationsNotificationsSettingsSMTPApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Notifications Settings (SMTP)
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/notificationsSettings/emailDeliverySettings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -189,7 +188,6 @@ export class ManagementAPIsNotificationsNotificationsSettingsSMTPApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDNotificationsSettingsEmailDeliverySettingsPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

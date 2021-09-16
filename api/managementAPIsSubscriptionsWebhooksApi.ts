@@ -167,10 +167,9 @@ export class ManagementAPIsSubscriptionsWebhooksApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Subscriptions
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDSubscriptionsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDSubscriptionsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/subscriptions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -189,7 +188,6 @@ export class ManagementAPIsSubscriptionsWebhooksApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDSubscriptionsPost.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -399,10 +397,9 @@ export class ManagementAPIsSubscriptionsWebhooksApi {
      * @summary UPDATE Subscription
      * @param envID 
      * @param subscriptionID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut (envID: string, subscriptionID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut (envID: string, subscriptionID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/subscriptions/{subscriptionID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'subscriptionID' + '}', encodeURIComponent(String(subscriptionID)));
@@ -427,7 +424,6 @@ export class ManagementAPIsSubscriptionsWebhooksApi {
             throw new Error('Required parameter subscriptionID was null or undefined when calling v1EnvironmentsEnvIDSubscriptionsSubscriptionIDPut.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

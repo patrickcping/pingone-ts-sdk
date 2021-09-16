@@ -238,9 +238,8 @@ export class ManagementAPIsNotificationsNotificationsSettingsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary UPDATE Notifications Settings
      * @param envID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDNotificationsSettingsPut (envID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDNotificationsSettingsPut (envID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/notificationsSettings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -259,7 +258,6 @@ export class ManagementAPIsNotificationsNotificationsSettingsApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDNotificationsSettingsPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

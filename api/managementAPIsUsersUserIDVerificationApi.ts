@@ -175,9 +175,8 @@ export class ManagementAPIsUsersUserIDVerificationApi {
      * @summary CREATE ID Verification Transaction Record for a User
      * @param envID 
      * @param userID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost (envID: string, userID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost (envID: string, userID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/verifyTransactions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -202,7 +201,6 @@ export class ManagementAPIsUsersUserIDVerificationApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDVerifyTransactionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

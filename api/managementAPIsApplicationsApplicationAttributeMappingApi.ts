@@ -99,10 +99,9 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
      * @summary CREATE Application Attribute Mapping
      * @param envID 
      * @param appID 
-     * @param contentType 
      * @param applicationAttributeMapping 
      */
-    public async createApplicationAttributeMapping (envID: string, appID: string, contentType?: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
+    public async createApplicationAttributeMapping (envID: string, appID: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -127,7 +126,6 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
             throw new Error('Required parameter appID was null or undefined when calling createApplicationAttributeMapping.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -433,10 +431,9 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
      * @param envID 
      * @param appID 
      * @param samlAttrID 
-     * @param contentType 
      * @param applicationAttributeMapping 
      */
-    public async updateApplicationAttributeMapping (envID: string, appID: string, samlAttrID: string, contentType?: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateApplicationAttributeMapping (envID: string, appID: string, samlAttrID: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
@@ -467,7 +464,6 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
             throw new Error('Required parameter samlAttrID was null or undefined when calling updateApplicationAttributeMapping.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -501,11 +497,12 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "ApplicationAttributeMapping");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

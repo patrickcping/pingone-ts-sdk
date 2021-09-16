@@ -175,10 +175,9 @@ export class ManagementAPIsUsersEnableUsersMFAApi {
      * @summary UPDATE User MFA Enabled
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDMfaEnabledPut (envID: string, userID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDMfaEnabledPut (envID: string, userID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/mfaEnabled'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -203,7 +202,6 @@ export class ManagementAPIsUsersEnableUsersMFAApi {
             throw new Error('Required parameter userID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDMfaEnabledPut.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

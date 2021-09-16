@@ -99,10 +99,9 @@ export class ManagementAPIsUsersUserRoleAssignmentsApi {
      * @summary CREATE User Role Assignment
      * @param envID 
      * @param userID 
-     * @param contentType 
      * @param roleAssignment 
      */
-    public async createUserRoleAssignment (envID: string, userID: string, contentType?: string, roleAssignment?: RoleAssignment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
+    public async createUserRoleAssignment (envID: string, userID: string, roleAssignment?: RoleAssignment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/roleAssignments'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)));
@@ -127,7 +126,6 @@ export class ManagementAPIsUsersUserRoleAssignmentsApi {
             throw new Error('Required parameter userID was null or undefined when calling createUserRoleAssignment.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

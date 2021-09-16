@@ -25,7 +25,7 @@ export class RiskEvaluationEventUser {
     /**
     * A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property.
     */
-    'type'?: string;
+    'type'?: RiskEvaluationEventUser.TypeEnum;
     /**
     * An array of group names.
     */
@@ -47,7 +47,7 @@ export class RiskEvaluationEventUser {
         {
             "name": "type",
             "baseName": "type",
-            "type": "string"
+            "type": "RiskEvaluationEventUser.TypeEnum"
         },
         {
             "name": "groups",
@@ -60,3 +60,8 @@ export class RiskEvaluationEventUser {
     }
 }
 
+export namespace RiskEvaluationEventUser {
+    export enum TypeEnum {
+        External = <any> 'EXTERNAL'
+    }
+}

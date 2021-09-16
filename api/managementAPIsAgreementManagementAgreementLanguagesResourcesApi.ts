@@ -346,10 +346,9 @@ export class ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi {
      * @param envID 
      * @param agreementID 
      * @param languageID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut (envID: string, agreementID: string, languageID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut (envID: string, agreementID: string, languageID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/agreements/{agreementID}/languages/{languageID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'agreementID' + '}', encodeURIComponent(String(agreementID)))
@@ -380,7 +379,6 @@ export class ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi {
             throw new Error('Required parameter languageID was null or undefined when calling v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -434,10 +432,9 @@ export class ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi {
      * @summary CREATE Language
      * @param envID 
      * @param agreementID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost (envID: string, agreementID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost (envID: string, agreementID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/agreements/{agreementID}/languages'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'agreementID' + '}', encodeURIComponent(String(agreementID)));
@@ -462,7 +459,6 @@ export class ManagementAPIsAgreementManagementAgreementLanguagesResourcesApi {
             throw new Error('Required parameter agreementID was null or undefined when calling v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

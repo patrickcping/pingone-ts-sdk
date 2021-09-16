@@ -177,9 +177,8 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
      * @summary UPDATE Application Secret
      * @param envID 
      * @param appID 
-     * @param contentType 
      */
-    public async updateApplicationSecret (envID: string, appID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateApplicationSecret (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/secret'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -204,7 +203,6 @@ export class ManagementAPIsApplicationsApplicationSecretApi {
             throw new Error('Required parameter appID was null or undefined when calling updateApplicationSecret.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

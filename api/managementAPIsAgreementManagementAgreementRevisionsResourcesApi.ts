@@ -247,10 +247,9 @@ export class ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi {
      * @param envID 
      * @param agreementID 
      * @param languageID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost (envID: string, agreementID: string, languageID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost (envID: string, agreementID: string, languageID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/agreements/{agreementID}/languages/{languageID}/revisions'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'agreementID' + '}', encodeURIComponent(String(agreementID)))
@@ -281,7 +280,6 @@ export class ManagementAPIsAgreementManagementAgreementRevisionsResourcesApi {
             throw new Error('Required parameter languageID was null or undefined when calling v1EnvironmentsEnvIDAgreementsAgreementIDLanguagesLanguageIDRevisionsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

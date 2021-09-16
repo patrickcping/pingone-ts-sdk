@@ -17,6 +17,7 @@ import http from 'http';
 /* tslint:disable:no-unused-locals */
 import { P1Error } from '../model/p1Error';
 import { RiskEvaluation } from '../model/riskEvaluation';
+import { RiskEvaluationEvent } from '../model/riskEvaluationEvent';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -97,10 +98,9 @@ export class ManagementAPIsRiskManagementRiskEvaluationsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Risk Evaluation
      * @param envID 
-     * @param contentType 
      * @param riskEvaluation 
      */
-    public async createRiskEvaluation (envID: string, contentType?: string, riskEvaluation?: RiskEvaluation, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RiskEvaluation;  }> {
+    public async createRiskEvaluation (envID: string, riskEvaluation?: RiskEvaluation, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RiskEvaluation;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/riskEvaluations'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -119,7 +119,6 @@ export class ManagementAPIsRiskManagementRiskEvaluationsApi {
             throw new Error('Required parameter envID was null or undefined when calling createRiskEvaluation.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -253,10 +252,9 @@ export class ManagementAPIsRiskManagementRiskEvaluationsApi {
      * @summary UPDATE Risk Evaluation
      * @param envID 
      * @param riskID 
-     * @param contentType 
-     * @param riskEvaluation 
+     * @param riskEvaluationEvent 
      */
-    public async updateRiskEvaluation (envID: string, riskID: string, contentType?: string, riskEvaluation?: RiskEvaluation, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RiskEvaluation;  }> {
+    public async updateRiskEvaluation (envID: string, riskID: string, riskEvaluationEvent?: RiskEvaluationEvent, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RiskEvaluation;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/riskEvaluations/{riskID}/event'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'riskID' + '}', encodeURIComponent(String(riskID)));
@@ -281,7 +279,6 @@ export class ManagementAPIsRiskManagementRiskEvaluationsApi {
             throw new Error('Required parameter riskID was null or undefined when calling updateRiskEvaluation.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -293,7 +290,7 @@ export class ManagementAPIsRiskManagementRiskEvaluationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(riskEvaluation, "RiskEvaluation")
+            body: ObjectSerializer.serialize(riskEvaluationEvent, "RiskEvaluationEvent")
         };
 
         let authenticationPromise = Promise.resolve();

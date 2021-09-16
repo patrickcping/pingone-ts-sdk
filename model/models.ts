@@ -241,6 +241,7 @@ let enumsMap: {[index: string]: any} = {
         "RiskEvaluationEvent.SharingTypeEnum": RiskEvaluationEvent.SharingTypeEnum,
         "RiskEvaluationEventEvaluatedFactors.StatusEnum": RiskEvaluationEventEvaluatedFactors.StatusEnum,
         "RiskEvaluationEventFlow.TypeEnum": RiskEvaluationEventFlow.TypeEnum,
+        "RiskEvaluationEventUser.TypeEnum": RiskEvaluationEventUser.TypeEnum,
         "RiskEvaluationResult.TypeEnum": RiskEvaluationResult.TypeEnum,
         "RiskEvaluationResult.LevelEnum": RiskEvaluationResult.LevelEnum,
         "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,

@@ -419,7 +419,7 @@ export class ManagementAPIsGroupsApi {
      * @param groupID 
      * @param group 
      */
-    public async updateGroup (envID: string, groupID: string, group?: Group, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateGroup (envID: string, groupID: string, group?: Group, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Group;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/groups/{groupID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'groupID' + '}', encodeURIComponent(String(groupID)));
@@ -477,11 +477,12 @@ export class ManagementAPIsGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: Group;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "Group");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

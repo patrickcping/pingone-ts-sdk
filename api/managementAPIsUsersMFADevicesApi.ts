@@ -348,10 +348,9 @@ export class ManagementAPIsUsersMFADevicesApi {
      * @param envID 
      * @param userID 
      * @param deviceID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut (envID: string, userID: string, deviceID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut (envID: string, userID: string, deviceID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/devices/{deviceID}/logs'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
@@ -382,7 +381,6 @@ export class ManagementAPIsUsersMFADevicesApi {
             throw new Error('Required parameter deviceID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -437,10 +435,9 @@ export class ManagementAPIsUsersMFADevicesApi {
      * @param envID 
      * @param userID 
      * @param deviceID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut (envID: string, userID: string, deviceID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut (envID: string, userID: string, deviceID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/devices/{deviceID}/nickname'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
@@ -471,7 +468,6 @@ export class ManagementAPIsUsersMFADevicesApi {
             throw new Error('Required parameter deviceID was null or undefined when calling v1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

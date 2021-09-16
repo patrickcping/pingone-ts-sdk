@@ -268,10 +268,9 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
      * @param envID 
      * @param gatewayID 
      * @param gatewayRoleAssignmentsID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut (envID: string, gatewayID: string, gatewayRoleAssignmentsID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut (envID: string, gatewayID: string, gatewayRoleAssignmentsID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentsID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
@@ -302,7 +301,6 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
             throw new Error('Required parameter gatewayRoleAssignmentsID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -434,10 +432,9 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
      * @summary CREATE Gateway Role Assignments
      * @param envID 
      * @param gatewayID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost (envID: string, gatewayID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost (envID: string, gatewayID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
@@ -462,7 +459,6 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
             throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

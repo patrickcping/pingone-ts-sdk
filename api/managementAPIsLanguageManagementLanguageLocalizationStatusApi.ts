@@ -346,10 +346,9 @@ export class ManagementAPIsLanguageManagementLanguageLocalizationStatusApi {
      * @param envID 
      * @param languageID 
      * @param l10nStatusID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut (envID: string, languageID: string, l10nStatusID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut (envID: string, languageID: string, l10nStatusID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/languages/{languageID}/status/{l10nStatusID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'languageID' + '}', encodeURIComponent(String(languageID)))
@@ -380,7 +379,6 @@ export class ManagementAPIsLanguageManagementLanguageLocalizationStatusApi {
             throw new Error('Required parameter l10nStatusID was null or undefined when calling v1EnvironmentsEnvIDLanguagesLanguageIDStatusL10nStatusIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -434,10 +432,9 @@ export class ManagementAPIsLanguageManagementLanguageLocalizationStatusApi {
      * @summary CREATE Language Localization Status
      * @param envID 
      * @param languageID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDLanguagesLanguageIDStatusPost (envID: string, languageID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDLanguagesLanguageIDStatusPost (envID: string, languageID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/languages/{languageID}/status'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'languageID' + '}', encodeURIComponent(String(languageID)));
@@ -462,7 +459,6 @@ export class ManagementAPIsLanguageManagementLanguageLocalizationStatusApi {
             throw new Error('Required parameter languageID was null or undefined when calling v1EnvironmentsEnvIDLanguagesLanguageIDStatusPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

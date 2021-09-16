@@ -246,10 +246,9 @@ export class ManagementAPIsPasswordPoliciesApi {
      * @summary UPDATE Password Policy
      * @param envID 
      * @param passwordPolicyID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut (envID: string, passwordPolicyID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut (envID: string, passwordPolicyID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/passwordPolicies/{passwordPolicyID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'passwordPolicyID' + '}', encodeURIComponent(String(passwordPolicyID)));
@@ -274,7 +273,6 @@ export class ManagementAPIsPasswordPoliciesApi {
             throw new Error('Required parameter passwordPolicyID was null or undefined when calling v1EnvironmentsEnvIDPasswordPoliciesPasswordPolicyIDPut.');
         }
 
-        localVarHeaderParams['content-type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

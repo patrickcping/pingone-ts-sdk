@@ -167,10 +167,9 @@ export class ManagementAPIsRiskManagementRiskPoliciesApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Risk Policy Set
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDRiskPolicySetsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDRiskPolicySetsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/riskPolicySets'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -189,7 +188,6 @@ export class ManagementAPIsRiskManagementRiskPoliciesApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDRiskPolicySetsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -399,10 +397,9 @@ export class ManagementAPIsRiskManagementRiskPoliciesApi {
      * @summary UPDATE Risk Policy Set
      * @param envID 
      * @param riskPolicySetID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut (envID: string, riskPolicySetID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut (envID: string, riskPolicySetID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/riskPolicySets/{riskPolicySetID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'riskPolicySetID' + '}', encodeURIComponent(String(riskPolicySetID)));
@@ -427,7 +424,6 @@ export class ManagementAPIsRiskManagementRiskPoliciesApi {
             throw new Error('Required parameter riskPolicySetID was null or undefined when calling v1EnvironmentsEnvIDRiskPolicySetsRiskPolicySetIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

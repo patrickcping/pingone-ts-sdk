@@ -254,9 +254,8 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
      * @param envID 
      * @param templateName 
      * @param contentID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet (envID: string, templateName: string, contentID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet (envID: string, templateName: string, contentID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/templates/{templateName}/contents/{contentID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'templateName' + '}', encodeURIComponent(String(templateName)))
@@ -287,7 +286,6 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
             throw new Error('Required parameter contentID was null or undefined when calling v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDGet.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -341,10 +339,9 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
      * @param envID 
      * @param templateName 
      * @param contentID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut (envID: string, templateName: string, contentID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut (envID: string, templateName: string, contentID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/templates/{templateName}/contents/{contentID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'templateName' + '}', encodeURIComponent(String(templateName)))
@@ -375,7 +372,6 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
             throw new Error('Required parameter contentID was null or undefined when calling v1EnvironmentsEnvIDTemplatesTemplateNameContentsContentIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -675,10 +671,9 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
      * @summary CREATE Push Content
      * @param envID 
      * @param templateName 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsPost (envID: string, templateName: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDTemplatesTemplateNameContentsPost (envID: string, templateName: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/templates/{templateName}/contents'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'templateName' + '}', encodeURIComponent(String(templateName)));
@@ -703,7 +698,6 @@ export class ManagementAPIsNotificationsNotificationsTemplatesApi {
             throw new Error('Required parameter templateName was null or undefined when calling v1EnvironmentsEnvIDTemplatesTemplateNameContentsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

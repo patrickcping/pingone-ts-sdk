@@ -317,10 +317,9 @@ export class ManagementAPIsNotificationsPhoneDeliverySettingsApi {
      * @summary UPDATE Phone Delivery Settings
      * @param envID 
      * @param phoneDeliverySettingsId 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut (envID: string, phoneDeliverySettingsId: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut (envID: string, phoneDeliverySettingsId: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'phoneDeliverySettingsId' + '}', encodeURIComponent(String(phoneDeliverySettingsId)));
@@ -345,7 +344,6 @@ export class ManagementAPIsNotificationsPhoneDeliverySettingsApi {
             throw new Error('Required parameter phoneDeliverySettingsId was null or undefined when calling v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -398,10 +396,9 @@ export class ManagementAPIsNotificationsPhoneDeliverySettingsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Phone Delivery Settings (Syniverse)
      * @param envID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost (envID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost (envID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/notificationsSettings/phoneDeliverySettings'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -420,7 +417,6 @@ export class ManagementAPIsNotificationsPhoneDeliverySettingsApi {
             throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDNotificationsSettingsPhoneDeliverySettingsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

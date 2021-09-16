@@ -182,9 +182,8 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
      * @summary CREATE Gateway Credentials
      * @param envID 
      * @param gatewayID 
-     * @param contentType 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost (envID: string, gatewayID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/credentials'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
@@ -209,7 +208,6 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
             throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

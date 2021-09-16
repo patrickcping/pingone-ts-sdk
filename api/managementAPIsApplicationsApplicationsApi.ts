@@ -99,10 +99,9 @@ export class ManagementAPIsApplicationsApplicationsApi {
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary CREATE Application
      * @param envID 
-     * @param contentType 
      * @param applicationSAMLApplicationOIDC 
      */
-    public async createApplication (envID: string, contentType?: string, applicationSAMLApplicationOIDC?: ApplicationSAML | ApplicationOIDC, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationSAML | ApplicationOIDC;  }> {
+    public async createApplication (envID: string, applicationSAMLApplicationOIDC?: ApplicationSAML | ApplicationOIDC, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationSAML | ApplicationOIDC;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)));
         let localVarQueryParameters: any = {};
@@ -121,7 +120,6 @@ export class ManagementAPIsApplicationsApplicationsApi {
             throw new Error('Required parameter envID was null or undefined when calling createApplication.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -176,9 +174,8 @@ export class ManagementAPIsApplicationsApplicationsApi {
      * @summary DELETE Application
      * @param envID 
      * @param appID 
-     * @param contentType 
      */
-    public async deleteApplication (envID: string, appID: string, contentType?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteApplication (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -203,7 +200,6 @@ export class ManagementAPIsApplicationsApplicationsApi {
             throw new Error('Required parameter appID was null or undefined when calling deleteApplication.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -407,10 +403,9 @@ export class ManagementAPIsApplicationsApplicationsApi {
      * @summary UPDATE Application
      * @param envID 
      * @param appID 
-     * @param contentType 
      * @param applicationSAMLApplicationOIDC 
      */
-    public async updateApplication (envID: string, appID: string, contentType?: string, applicationSAMLApplicationOIDC?: ApplicationSAML | ApplicationOIDC, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateApplication (envID: string, appID: string, applicationSAMLApplicationOIDC?: ApplicationSAML | ApplicationOIDC, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationSAML | ApplicationOIDC;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -435,7 +430,6 @@ export class ManagementAPIsApplicationsApplicationsApi {
             throw new Error('Required parameter appID was null or undefined when calling updateApplication.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -469,11 +463,12 @@ export class ManagementAPIsApplicationsApplicationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationSAML | ApplicationOIDC;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "ApplicationSAML | ApplicationOIDC");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

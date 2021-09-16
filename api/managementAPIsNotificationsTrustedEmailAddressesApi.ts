@@ -175,10 +175,9 @@ export class ManagementAPIsNotificationsTrustedEmailAddressesApi {
      * @summary CREATE Trusted Email Address
      * @param envID 
      * @param emailDomainId 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost (envID: string, emailDomainId: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost (envID: string, emailDomainId: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/emailDomains/{emailDomainId}/trustedEmails'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'emailDomainId' + '}', encodeURIComponent(String(emailDomainId)));
@@ -203,7 +202,6 @@ export class ManagementAPIsNotificationsTrustedEmailAddressesApi {
             throw new Error('Required parameter emailDomainId was null or undefined when calling v1EnvironmentsEnvIDEmailDomainsEmailDomainIdTrustedEmailsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;

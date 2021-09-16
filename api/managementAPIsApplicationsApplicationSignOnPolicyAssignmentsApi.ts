@@ -175,10 +175,9 @@ export class ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi {
      * @summary CREATE SOP Assignment
      * @param envID 
      * @param appID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost (envID: string, appID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost (envID: string, appID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -203,7 +202,6 @@ export class ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi {
             throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsPost.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -428,10 +426,9 @@ export class ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi {
      * @param envID 
      * @param appID 
      * @param sOPAssignmentID 
-     * @param contentType 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut (envID: string, appID: string, sOPAssignmentID: string, contentType?: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut (envID: string, appID: string, sOPAssignmentID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/signOnPolicyAssignments/{SOPAssignmentID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
@@ -462,7 +459,6 @@ export class ManagementAPIsApplicationsApplicationSignOnPolicyAssignmentsApi {
             throw new Error('Required parameter sOPAssignmentID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDSignOnPolicyAssignmentsSOPAssignmentIDPut.');
         }
 
-        localVarHeaderParams['Content-Type'] = ObjectSerializer.serialize(contentType, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
