@@ -103,6 +103,7 @@ model/applicationSAMLAllOfSpVerificationCertificates.ts
 model/applicationSecret.ts
 model/billOfMaterials.ts
 model/billOfMaterialsBookmarks.ts
+model/billOfMaterialsConsole.ts
 model/billOfMaterialsProducts.ts
 model/entityArray.ts
 model/entityArrayEmbedded.ts

@@ -17,6 +17,7 @@ import { RequestFile } from './models';
 */
 export class RiskEvaluationEventBrowser {
     'userAgent'?: string;
+    'cookie'?: string;
     'language'?: string;
     'colorDepth'?: number;
     'deviceMemory'?: number;
@@ -50,6 +51,11 @@ export class RiskEvaluationEventBrowser {
         {
             "name": "userAgent",
             "baseName": "userAgent",
+            "type": "string"
+        },
+        {
+            "name": "cookie",
+            "baseName": "cookie",
             "type": "string"
         },
         {

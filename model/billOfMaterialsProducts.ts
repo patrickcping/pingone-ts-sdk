@@ -12,6 +12,7 @@
 
 import { RequestFile } from './models';
 import { BillOfMaterialsBookmarks } from './billOfMaterialsBookmarks';
+import { BillOfMaterialsConsole } from './billOfMaterialsConsole';
 
 export class BillOfMaterialsProducts {
     /**
@@ -26,6 +27,7 @@ export class BillOfMaterialsProducts {
     * A string that specifies the description of the product or standalone service
     */
     'description'?: string;
+    'console'?: BillOfMaterialsConsole;
     /**
     * Optional array of custom bookmarks. Maximum of five bookmarks per product.
     */
@@ -48,6 +50,11 @@ export class BillOfMaterialsProducts {
             "name": "description",
             "baseName": "description",
             "type": "string"
+        },
+        {
+            "name": "console",
+            "baseName": "console",
+            "type": "BillOfMaterialsConsole"
         },
         {
             "name": "bookmarks",

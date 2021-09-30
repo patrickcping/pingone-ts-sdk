@@ -24,6 +24,7 @@ export * from './applicationSAMLAllOfSpVerificationCertificates';
 export * from './applicationSecret';
 export * from './billOfMaterials';
 export * from './billOfMaterialsBookmarks';
+export * from './billOfMaterialsConsole';
 export * from './billOfMaterialsProducts';
 export * from './entityArray';
 export * from './entityArrayEmbedded';
@@ -124,6 +125,7 @@ import { ApplicationSAMLAllOfSpVerificationCertificates } from './applicationSAM
 import { ApplicationSecret } from './applicationSecret';
 import { BillOfMaterials } from './billOfMaterials';
 import { BillOfMaterialsBookmarks } from './billOfMaterialsBookmarks';
+import { BillOfMaterialsConsole } from './billOfMaterialsConsole';
 import { BillOfMaterialsProducts } from './billOfMaterialsProducts';
 import { EntityArray } from './entityArray';
 import { EntityArrayEmbedded } from './entityArrayEmbedded';
@@ -275,6 +277,7 @@ let typeMap: {[index: string]: any} = {
     "ApplicationSecret": ApplicationSecret,
     "BillOfMaterials": BillOfMaterials,
     "BillOfMaterialsBookmarks": BillOfMaterialsBookmarks,
+    "BillOfMaterialsConsole": BillOfMaterialsConsole,
     "BillOfMaterialsProducts": BillOfMaterialsProducts,
     "EntityArray": EntityArray,
     "EntityArrayEmbedded": EntityArrayEmbedded,
