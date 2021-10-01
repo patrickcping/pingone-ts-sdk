@@ -20,6 +20,7 @@ import { Group } from './group';
 import { GroupMembership } from './groupMembership';
 import { Population } from './population';
 import { Resource } from './resource';
+import { RiskPredictor } from './riskPredictor';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
 import { Schema } from './schema';
@@ -35,6 +36,7 @@ export class EntityArrayEmbedded {
     'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
     'resources'?: Array<Resource>;
+    'riskPredictors'?: Array<RiskPredictor>;
     'roleAssignments'?: Array<RoleAssignment>;
     'roles'?: Array<Role>;
     'schemas'?: Array<Schema>;
@@ -82,6 +84,11 @@ export class EntityArrayEmbedded {
             "name": "resources",
             "baseName": "resources",
             "type": "Array<Resource>"
+        },
+        {
+            "name": "riskPredictors",
+            "baseName": "riskPredictors",
+            "type": "Array<RiskPredictor>"
         },
         {
             "name": "roleAssignments",

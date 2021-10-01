@@ -65,6 +65,11 @@ export * from './riskEvaluationEventUser';
 export * from './riskEvaluationEventUserGroups';
 export * from './riskEvaluationResult';
 export * from './riskEvaluationRiskPolicySet';
+export * from './riskPredictor';
+export * from './riskPredictorDefault';
+export * from './riskPredictorDefaultResult';
+export * from './riskPredictorMap';
+export * from './riskPredictorMapBetween';
 export * from './role';
 export * from './roleAssignment';
 export * from './roleAssignmentRole';
@@ -166,6 +171,11 @@ import { RiskEvaluationEventUser } from './riskEvaluationEventUser';
 import { RiskEvaluationEventUserGroups } from './riskEvaluationEventUserGroups';
 import { RiskEvaluationResult } from './riskEvaluationResult';
 import { RiskEvaluationRiskPolicySet } from './riskEvaluationRiskPolicySet';
+import { RiskPredictor } from './riskPredictor';
+import { RiskPredictorDefault } from './riskPredictorDefault';
+import { RiskPredictorDefaultResult } from './riskPredictorDefaultResult';
+import { RiskPredictorMap } from './riskPredictorMap';
+import { RiskPredictorMapBetween } from './riskPredictorMapBetween';
 import { Role } from './role';
 import { RoleAssignment } from './roleAssignment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
@@ -246,6 +256,9 @@ let enumsMap: {[index: string]: any} = {
         "RiskEvaluationEventUser.TypeEnum": RiskEvaluationEventUser.TypeEnum,
         "RiskEvaluationResult.TypeEnum": RiskEvaluationResult.TypeEnum,
         "RiskEvaluationResult.LevelEnum": RiskEvaluationResult.LevelEnum,
+        "RiskPredictor.TypeEnum": RiskPredictor.TypeEnum,
+        "RiskPredictorDefaultResult.LevelEnum": RiskPredictorDefaultResult.LevelEnum,
+        "RiskPredictorDefaultResult.TypeEnum": RiskPredictorDefaultResult.TypeEnum,
         "RoleAssignmentScope.TypeEnum": RoleAssignmentScope.TypeEnum,
         "SchemaAttribute.SchemaTypeEnum": SchemaAttribute.SchemaTypeEnum,
         "SchemaAttribute.TypeEnum": SchemaAttribute.TypeEnum,
@@ -318,6 +331,11 @@ let typeMap: {[index: string]: any} = {
     "RiskEvaluationEventUserGroups": RiskEvaluationEventUserGroups,
     "RiskEvaluationResult": RiskEvaluationResult,
     "RiskEvaluationRiskPolicySet": RiskEvaluationRiskPolicySet,
+    "RiskPredictor": RiskPredictor,
+    "RiskPredictorDefault": RiskPredictorDefault,
+    "RiskPredictorDefaultResult": RiskPredictorDefaultResult,
+    "RiskPredictorMap": RiskPredictorMap,
+    "RiskPredictorMapBetween": RiskPredictorMapBetween,
     "Role": Role,
     "RoleAssignment": RoleAssignment,
     "RoleAssignmentRole": RoleAssignmentRole,

@@ -145,6 +145,11 @@ model/riskEvaluationEventUser.ts
 model/riskEvaluationEventUserGroups.ts
 model/riskEvaluationResult.ts
 model/riskEvaluationRiskPolicySet.ts
+model/riskPredictor.ts
+model/riskPredictorDefault.ts
+model/riskPredictorDefaultResult.ts
+model/riskPredictorMap.ts
+model/riskPredictorMapBetween.ts
 model/role.ts
 model/roleAssignment.ts
 model/roleAssignmentRole.ts
