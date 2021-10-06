@@ -113,6 +113,7 @@ model/environmentOrganization.ts
 model/group.ts
 model/groupDirectMemberCounts.ts
 model/groupMembership.ts
+model/groupPopulation.ts
 model/groupTotalMemberCounts.ts
 model/inlineObject2.ts
 model/inlineObject3.ts

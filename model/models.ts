@@ -34,6 +34,7 @@ export * from './environmentOrganization';
 export * from './group';
 export * from './groupDirectMemberCounts';
 export * from './groupMembership';
+export * from './groupPopulation';
 export * from './groupTotalMemberCounts';
 export * from './inlineObject2';
 export * from './inlineObject3';
@@ -140,6 +141,7 @@ import { EnvironmentOrganization } from './environmentOrganization';
 import { Group } from './group';
 import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
 import { GroupMembership } from './groupMembership';
+import { GroupPopulation } from './groupPopulation';
 import { GroupTotalMemberCounts } from './groupTotalMemberCounts';
 import { InlineObject2 } from './inlineObject2';
 import { InlineObject3 } from './inlineObject3';
@@ -300,6 +302,7 @@ let typeMap: {[index: string]: any} = {
     "Group": Group,
     "GroupDirectMemberCounts": GroupDirectMemberCounts,
     "GroupMembership": GroupMembership,
+    "GroupPopulation": GroupPopulation,
     "GroupTotalMemberCounts": GroupTotalMemberCounts,
     "InlineObject2": InlineObject2,
     "InlineObject3": InlineObject3,

@@ -12,9 +12,9 @@
 
 import { RequestFile } from './models';
 import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
+import { GroupPopulation } from './groupPopulation';
 import { GroupTotalMemberCounts } from './groupTotalMemberCounts';
 import { ObjectEnvironment } from './objectEnvironment';
-import { ObjectPopulation } from './objectPopulation';
 
 export class Group {
     /**
@@ -22,7 +22,7 @@ export class Group {
     */
     'id'?: string;
     'environment'?: ObjectEnvironment;
-    'population'?: ObjectPopulation;
+    'population'?: GroupPopulation;
     /**
     * The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group names associated with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions.
     */
@@ -62,7 +62,7 @@ export class Group {
         {
             "name": "population",
             "baseName": "population",
-            "type": "ObjectPopulation"
+            "type": "GroupPopulation"
         },
         {
             "name": "name",

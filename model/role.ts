@@ -27,6 +27,10 @@ export class Role {
     */
     'id'?: string;
     /**
+    * The name of the role
+    */
+    'name'?: string;
+    /**
     * A string that specifies the set of permissions assigned to the role.
     */
     'permissions'?: Array<RolePermissions>;
@@ -47,6 +51,11 @@ export class Role {
         {
             "name": "id",
             "baseName": "id",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string"
         },
         {
