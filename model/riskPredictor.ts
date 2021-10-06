@@ -28,7 +28,7 @@ export class RiskPredictor {
     */
     'compactName'?: string;
     /**
-    * A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
+    * An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
     */
     'type'?: RiskPredictor.TypeEnum;
     /**

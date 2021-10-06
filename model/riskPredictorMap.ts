@@ -11,14 +11,15 @@
  */
 
 import { RequestFile } from './models';
+import { RiskPredictorItemMap } from './riskPredictorItemMap';
 
 /**
 * An object that defines the mapping of risk levels for the list of all results.
 */
 export class RiskPredictorMap {
-    'high'?: RiskPredictorMap;
-    'medium'?: RiskPredictorMap;
-    'low'?: RiskPredictorMap;
+    'high'?: RiskPredictorItemMap;
+    'medium'?: RiskPredictorItemMap;
+    'low'?: RiskPredictorItemMap;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,17 +27,17 @@ export class RiskPredictorMap {
         {
             "name": "high",
             "baseName": "high",
-            "type": "RiskPredictorMap"
+            "type": "RiskPredictorItemMap"
         },
         {
             "name": "medium",
             "baseName": "medium",
-            "type": "RiskPredictorMap"
+            "type": "RiskPredictorItemMap"
         },
         {
             "name": "low",
             "baseName": "low",
-            "type": "RiskPredictorMap"
+            "type": "RiskPredictorItemMap"
         }    ];
 
     static getAttributeTypeMap() {
