@@ -11,12 +11,22 @@
  */
 
 import { RequestFile } from './models';
+import { ApplicationOIDCAllOfMobile } from './applicationOIDCAllOfMobile';
 
 export class ApplicationOIDCAllOf {
+    'mobile'?: ApplicationOIDCAllOfMobile;
     /**
-    * A string that specifies the grant type for the authorization request. This is a required property. Options are authorization_code, implicit, refresh_token, and client_credentials.
+    * A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
     */
-    'grantTypes'?: ApplicationOIDCAllOf.GrantTypesEnum;
+    'bundleId'?: string;
+    /**
+    * A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
+    */
+    'packageName'?: string;
+    /**
+    * A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
+    */
+    'grantTypes'?: Array<ApplicationOIDCAllOf.GrantTypesEnum>;
     /**
     * A string that specifies the custom home page URL for the application.
     */
@@ -44,7 +54,7 @@ export class ApplicationOIDCAllOf {
     /**
     * A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
     */
-    'responseTypes'?: ApplicationOIDCAllOf.ResponseTypesEnum;
+    'responseTypes'?: Array<ApplicationOIDCAllOf.ResponseTypesEnum>;
     /**
     * A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
     */
@@ -54,9 +64,24 @@ export class ApplicationOIDCAllOf {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
+            "name": "mobile",
+            "baseName": "mobile",
+            "type": "ApplicationOIDCAllOfMobile"
+        },
+        {
+            "name": "bundleId",
+            "baseName": "bundleId",
+            "type": "string"
+        },
+        {
+            "name": "packageName",
+            "baseName": "packageName",
+            "type": "string"
+        },
+        {
             "name": "grantTypes",
             "baseName": "grantTypes",
-            "type": "ApplicationOIDCAllOf.GrantTypesEnum"
+            "type": "Array<ApplicationOIDCAllOf.GrantTypesEnum>"
         },
         {
             "name": "homePageUrl",
@@ -91,7 +116,7 @@ export class ApplicationOIDCAllOf {
         {
             "name": "responseTypes",
             "baseName": "responseTypes",
-            "type": "ApplicationOIDCAllOf.ResponseTypesEnum"
+            "type": "Array<ApplicationOIDCAllOf.ResponseTypesEnum>"
         },
         {
             "name": "tokenEndpointAuthMethod",
@@ -106,10 +131,10 @@ export class ApplicationOIDCAllOf {
 
 export namespace ApplicationOIDCAllOf {
     export enum GrantTypesEnum {
-        AuthorizationCode = <any> 'authorization_code',
-        Implicit = <any> 'implicit',
-        RefreshToken = <any> 'refresh_token',
-        ClientCredentials = <any> 'client_credentials'
+        AuthorizationCode = <any> 'AUTHORIZATION_CODE',
+        Implicit = <any> 'IMPLICIT',
+        RefreshToken = <any> 'REFRESH_TOKEN',
+        ClientCredentials = <any> 'CLIENT_CREDENTIALS'
     }
     export enum PkceEnforcementEnum {
         Optional = <any> 'OPTIONAL',

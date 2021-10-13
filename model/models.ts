@@ -6,11 +6,11 @@ export * from './applicationAccessControlGroup';
 export * from './applicationAccessControlRole';
 export * from './applicationAttributeMapping';
 export * from './applicationIcon';
-export * from './applicationMobile';
-export * from './applicationMobileIntegrityDetection';
-export * from './applicationMobileIntegrityDetectionCacheDuration';
 export * from './applicationOIDC';
 export * from './applicationOIDCAllOf';
+export * from './applicationOIDCAllOfMobile';
+export * from './applicationOIDCAllOfMobileIntegrityDetection';
+export * from './applicationOIDCAllOfMobileIntegrityDetectionCacheDuration';
 export * from './applicationResourceGrant';
 export * from './applicationResourceGrantApplication';
 export * from './applicationResourceGrantResource';
@@ -120,11 +120,11 @@ import { ApplicationAccessControlGroup } from './applicationAccessControlGroup';
 import { ApplicationAccessControlRole } from './applicationAccessControlRole';
 import { ApplicationAttributeMapping } from './applicationAttributeMapping';
 import { ApplicationIcon } from './applicationIcon';
-import { ApplicationMobile } from './applicationMobile';
-import { ApplicationMobileIntegrityDetection } from './applicationMobileIntegrityDetection';
-import { ApplicationMobileIntegrityDetectionCacheDuration } from './applicationMobileIntegrityDetectionCacheDuration';
 import { ApplicationOIDC } from './applicationOIDC';
 import { ApplicationOIDCAllOf } from './applicationOIDCAllOf';
+import { ApplicationOIDCAllOfMobile } from './applicationOIDCAllOfMobile';
+import { ApplicationOIDCAllOfMobileIntegrityDetection } from './applicationOIDCAllOfMobileIntegrityDetection';
+import { ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration } from './applicationOIDCAllOfMobileIntegrityDetectionCacheDuration';
 import { ApplicationResourceGrant } from './applicationResourceGrant';
 import { ApplicationResourceGrantApplication } from './applicationResourceGrantApplication';
 import { ApplicationResourceGrantResource } from './applicationResourceGrantResource';
@@ -228,14 +228,10 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
-        "Application.EnabledEnum": Application.EnabledEnum,
         "Application.ProtocolEnum": Application.ProtocolEnum,
         "Application.TagsEnum": Application.TagsEnum,
         "Application.TypeEnum": Application.TypeEnum,
         "ApplicationAttributeMapping.MappingTypeEnum": ApplicationAttributeMapping.MappingTypeEnum,
-        "ApplicationMobileIntegrityDetection.ModeEnum": ApplicationMobileIntegrityDetection.ModeEnum,
-        "ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum": ApplicationMobileIntegrityDetectionCacheDuration.UnitsEnum,
-        "ApplicationOIDC.EnabledEnum": ApplicationOIDC.EnabledEnum,
         "ApplicationOIDC.ProtocolEnum": ApplicationOIDC.ProtocolEnum,
         "ApplicationOIDC.TagsEnum": ApplicationOIDC.TagsEnum,
         "ApplicationOIDC.TypeEnum": ApplicationOIDC.TypeEnum,
@@ -247,7 +243,8 @@ let enumsMap: {[index: string]: any} = {
         "ApplicationOIDCAllOf.PkceEnforcementEnum": ApplicationOIDCAllOf.PkceEnforcementEnum,
         "ApplicationOIDCAllOf.ResponseTypesEnum": ApplicationOIDCAllOf.ResponseTypesEnum,
         "ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum": ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum,
-        "ApplicationSAML.EnabledEnum": ApplicationSAML.EnabledEnum,
+        "ApplicationOIDCAllOfMobileIntegrityDetection.ModeEnum": ApplicationOIDCAllOfMobileIntegrityDetection.ModeEnum,
+        "ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.UnitsEnum": ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.UnitsEnum,
         "ApplicationSAML.ProtocolEnum": ApplicationSAML.ProtocolEnum,
         "ApplicationSAML.TagsEnum": ApplicationSAML.TagsEnum,
         "ApplicationSAML.TypeEnum": ApplicationSAML.TypeEnum,
@@ -290,11 +287,11 @@ let typeMap: {[index: string]: any} = {
     "ApplicationAccessControlRole": ApplicationAccessControlRole,
     "ApplicationAttributeMapping": ApplicationAttributeMapping,
     "ApplicationIcon": ApplicationIcon,
-    "ApplicationMobile": ApplicationMobile,
-    "ApplicationMobileIntegrityDetection": ApplicationMobileIntegrityDetection,
-    "ApplicationMobileIntegrityDetectionCacheDuration": ApplicationMobileIntegrityDetectionCacheDuration,
     "ApplicationOIDC": ApplicationOIDC,
     "ApplicationOIDCAllOf": ApplicationOIDCAllOf,
+    "ApplicationOIDCAllOfMobile": ApplicationOIDCAllOfMobile,
+    "ApplicationOIDCAllOfMobileIntegrityDetection": ApplicationOIDCAllOfMobileIntegrityDetection,
+    "ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration": ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration,
     "ApplicationResourceGrant": ApplicationResourceGrant,
     "ApplicationResourceGrantApplication": ApplicationResourceGrantApplication,
     "ApplicationResourceGrantResource": ApplicationResourceGrantResource,

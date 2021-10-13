@@ -85,11 +85,11 @@ model/applicationAccessControlGroup.ts
 model/applicationAccessControlRole.ts
 model/applicationAttributeMapping.ts
 model/applicationIcon.ts
-model/applicationMobile.ts
-model/applicationMobileIntegrityDetection.ts
-model/applicationMobileIntegrityDetectionCacheDuration.ts
 model/applicationOIDC.ts
 model/applicationOIDCAllOf.ts
+model/applicationOIDCAllOfMobile.ts
+model/applicationOIDCAllOfMobileIntegrityDetection.ts
+model/applicationOIDCAllOfMobileIntegrityDetectionCacheDuration.ts
 model/applicationResourceGrant.ts
 model/applicationResourceGrantApplication.ts
 model/applicationResourceGrantResource.ts

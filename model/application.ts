@@ -13,7 +13,6 @@
 import { RequestFile } from './models';
 import { ApplicationAccessControl } from './applicationAccessControl';
 import { ApplicationIcon } from './applicationIcon';
-import { ApplicationMobile } from './applicationMobile';
 import { ObjectEnvironment } from './objectEnvironment';
 
 export class Application {
@@ -33,7 +32,7 @@ export class Application {
     /**
     * A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
     */
-    'enabled'?: Application.EnabledEnum;
+    'enabled'?: boolean;
     'environment'?: ObjectEnvironment;
     'icon'?: ApplicationIcon;
     /**
@@ -64,7 +63,6 @@ export class Application {
     * The time the resource was last updated.
     */
     'updatedAt'?: string;
-    'mobile'?: ApplicationMobile;
     /**
     * A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
     */
@@ -96,7 +94,7 @@ export class Application {
         {
             "name": "enabled",
             "baseName": "enabled",
-            "type": "Application.EnabledEnum"
+            "type": "boolean"
         },
         {
             "name": "environment",
@@ -144,11 +142,6 @@ export class Application {
             "type": "string"
         },
         {
-            "name": "mobile",
-            "baseName": "mobile",
-            "type": "ApplicationMobile"
-        },
-        {
             "name": "supportUnsignedRequestObject",
             "baseName": "supportUnsignedRequestObject",
             "type": "boolean"
@@ -160,10 +153,6 @@ export class Application {
 }
 
 export namespace Application {
-    export enum EnabledEnum {
-        Enabled = <any> 'ENABLED',
-        Disabled = <any> 'DISABLED'
-    }
     export enum ProtocolEnum {
         OpenidConnect = <any> 'OPENID_CONNECT',
         Saml = <any> 'SAML'

@@ -14,8 +14,8 @@ import { RequestFile } from './models';
 import { Application } from './application';
 import { ApplicationAccessControl } from './applicationAccessControl';
 import { ApplicationIcon } from './applicationIcon';
-import { ApplicationMobile } from './applicationMobile';
 import { ApplicationOIDCAllOf } from './applicationOIDCAllOf';
+import { ApplicationOIDCAllOfMobile } from './applicationOIDCAllOfMobile';
 import { ObjectEnvironment } from './objectEnvironment';
 
 export class ApplicationOIDC {
@@ -35,7 +35,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
     */
-    'enabled'?: ApplicationOIDC.EnabledEnum;
+    'enabled'?: boolean;
     'environment'?: ObjectEnvironment;
     'icon'?: ApplicationIcon;
     /**
@@ -66,15 +66,23 @@ export class ApplicationOIDC {
     * The time the resource was last updated.
     */
     'updatedAt'?: string;
-    'mobile'?: ApplicationMobile;
     /**
     * A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
     */
     'supportUnsignedRequestObject'?: boolean;
+    'mobile'?: ApplicationOIDCAllOfMobile;
     /**
-    * A string that specifies the grant type for the authorization request. This is a required property. Options are authorization_code, implicit, refresh_token, and client_credentials.
+    * A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
     */
-    'grantTypes'?: ApplicationOIDC.GrantTypesEnum;
+    'bundleId'?: string;
+    /**
+    * A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
+    */
+    'packageName'?: string;
+    /**
+    * A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
+    */
+    'grantTypes'?: Array<ApplicationOIDC.GrantTypesEnum>;
     /**
     * A string that specifies the custom home page URL for the application.
     */
@@ -102,7 +110,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
     */
-    'responseTypes'?: ApplicationOIDC.ResponseTypesEnum;
+    'responseTypes'?: Array<ApplicationOIDC.ResponseTypesEnum>;
     /**
     * A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
     */
@@ -134,7 +142,7 @@ export class ApplicationOIDC {
         {
             "name": "enabled",
             "baseName": "enabled",
-            "type": "ApplicationOIDC.EnabledEnum"
+            "type": "boolean"
         },
         {
             "name": "environment",
@@ -182,19 +190,29 @@ export class ApplicationOIDC {
             "type": "string"
         },
         {
-            "name": "mobile",
-            "baseName": "mobile",
-            "type": "ApplicationMobile"
-        },
-        {
             "name": "supportUnsignedRequestObject",
             "baseName": "supportUnsignedRequestObject",
             "type": "boolean"
         },
         {
+            "name": "mobile",
+            "baseName": "mobile",
+            "type": "ApplicationOIDCAllOfMobile"
+        },
+        {
+            "name": "bundleId",
+            "baseName": "bundleId",
+            "type": "string"
+        },
+        {
+            "name": "packageName",
+            "baseName": "packageName",
+            "type": "string"
+        },
+        {
             "name": "grantTypes",
             "baseName": "grantTypes",
-            "type": "ApplicationOIDC.GrantTypesEnum"
+            "type": "Array<ApplicationOIDC.GrantTypesEnum>"
         },
         {
             "name": "homePageUrl",
@@ -229,7 +247,7 @@ export class ApplicationOIDC {
         {
             "name": "responseTypes",
             "baseName": "responseTypes",
-            "type": "ApplicationOIDC.ResponseTypesEnum"
+            "type": "Array<ApplicationOIDC.ResponseTypesEnum>"
         },
         {
             "name": "tokenEndpointAuthMethod",
@@ -243,10 +261,6 @@ export class ApplicationOIDC {
 }
 
 export namespace ApplicationOIDC {
-    export enum EnabledEnum {
-        Enabled = <any> 'ENABLED',
-        Disabled = <any> 'DISABLED'
-    }
     export enum ProtocolEnum {
         OpenidConnect = <any> 'OPENID_CONNECT',
         Saml = <any> 'SAML'
@@ -263,10 +277,10 @@ export namespace ApplicationOIDC {
         CustomApp = <any> 'CUSTOM_APP'
     }
     export enum GrantTypesEnum {
-        AuthorizationCode = <any> 'authorization_code',
-        Implicit = <any> 'implicit',
-        RefreshToken = <any> 'refresh_token',
-        ClientCredentials = <any> 'client_credentials'
+        AuthorizationCode = <any> 'AUTHORIZATION_CODE',
+        Implicit = <any> 'IMPLICIT',
+        RefreshToken = <any> 'REFRESH_TOKEN',
+        ClientCredentials = <any> 'CLIENT_CREDENTIALS'
     }
     export enum PkceEnforcementEnum {
         Optional = <any> 'OPTIONAL',
