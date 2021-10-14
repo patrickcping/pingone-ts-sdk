@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { RiskPredictorItemMapBetween } from './riskPredictorItemMapBetween';
 
 export class RiskPredictorItemMap {
-    'contains'?: string;
+    'contains': string;
     /**
     * List of CIDRs to include
     */

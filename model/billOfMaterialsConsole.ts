@@ -16,7 +16,7 @@ export class BillOfMaterialsConsole {
     /**
     * Primary console link for certain products
     */
-    'href'?: string;
+    'href': string;
 
     static discriminator: string | undefined = undefined;
 

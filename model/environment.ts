@@ -29,20 +29,20 @@ export class Environment {
     * A string that specifies the resource’s unique identifier.
     */
     'id'?: string;
-    'license'?: EnvironmentLicense;
+    'license': EnvironmentLicense;
     /**
     * A string that specifies the environment name, which must be provided and must be unique within an organization.
     */
-    'name'?: string;
+    'name': string;
     'organization'?: EnvironmentOrganization;
     /**
     * A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated. Options are NA, EU, and AP.
     */
-    'region'?: Environment.RegionEnum;
+    'region': Environment.RegionEnum;
     /**
     * A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX.
     */
-    'type'?: Environment.TypeEnum;
+    'type': Environment.TypeEnum;
     /**
     * The time the resource was last updated.
     */

@@ -24,7 +24,7 @@ export class RiskEvaluation {
     'createdAt'?: string;
     'details'?: RiskEvaluationDetails;
     'environment'?: ObjectEnvironment;
-    'event'?: RiskEvaluationEvent;
+    'event': RiskEvaluationEvent;
     /**
     * A string that specifies the resource’s unique identifier.
     */

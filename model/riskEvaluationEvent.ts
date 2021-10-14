@@ -28,7 +28,7 @@ export class RiskEvaluationEvent {
     /**
     * A string that specifies the origin IP address of the authentication flow. This is a required property.
     */
-    'ip'?: string;
+    'ip': string;
     'flow'?: RiskEvaluationEventFlow;
     /**
     * A string that specifies the calling service.
@@ -36,7 +36,7 @@ export class RiskEvaluationEvent {
     'origin'?: string;
     'session'?: RiskEvaluationEventSession;
     'targetResource'?: RiskEvaluationEventTargetResource;
-    'user'?: RiskEvaluationEventUser;
+    'user': RiskEvaluationEventUser;
     /**
     * A string that specifies the device sharing type. Options are UNSPECIFIED, SHARED, and PRIVATE.
     */

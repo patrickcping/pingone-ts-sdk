@@ -22,7 +22,7 @@ export class BillOfMaterialsProducts {
     /**
     * A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID, PING_ID_SDK, PING_INTELLIGENCE, and PING_CENTRAL
     */
-    'type'?: BillOfMaterialsProducts.TypeEnum;
+    'type': BillOfMaterialsProducts.TypeEnum;
     /**
     * A string that specifies the description of the product or standalone service
     */

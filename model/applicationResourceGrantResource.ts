@@ -16,7 +16,7 @@ export class ApplicationResourceGrantResource {
     /**
     * A string that specifies the ID of the protected resource associated with this grant. This is a required property.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

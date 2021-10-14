@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { ApplicationSAMLAllOfSpVerificationCertificates } from './applicationSAMLAllOfSpVerificationCertificates';
 
 export class ApplicationSAMLAllOfSpVerification {
-    'certificates'?: Array<ApplicationSAMLAllOfSpVerificationCertificates>;
+    'certificates': Array<ApplicationSAMLAllOfSpVerificationCertificates>;
 
     static discriminator: string | undefined = undefined;
 

@@ -19,7 +19,7 @@ import { RiskPolicySetConditionBetween } from './riskPolicySetConditionBetween';
 */
 export class RiskPolicySetCondition {
     'value'?: string;
-    'equals'?: object;
+    'equals'?: string | boolean;
     'aggregatedWeights'?: Array<RiskPolicySetConditionAggregatedWeights>;
     'between'?: RiskPolicySetConditionBetween;
 
@@ -34,7 +34,7 @@ export class RiskPolicySetCondition {
         {
             "name": "equals",
             "baseName": "equals",
-            "type": "object"
+            "type": "string | boolean"
         },
         {
             "name": "aggregatedWeights",

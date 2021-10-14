@@ -16,7 +16,7 @@ export class RiskEvaluationEventSession {
     /**
     * A string that specifies a unique session ID associated with the event.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

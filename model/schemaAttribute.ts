@@ -26,7 +26,7 @@ export class SchemaAttribute {
     /**
     * A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'environment'?: ObjectEnvironment;
     /**
     * A string that specifies the resource’s unique identifier.
@@ -39,7 +39,7 @@ export class SchemaAttribute {
     /**
     * A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
     */
@@ -52,7 +52,7 @@ export class SchemaAttribute {
     /**
     * A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB).
     */
-    'type'?: SchemaAttribute.TypeEnum;
+    'type': SchemaAttribute.TypeEnum;
     /**
     * A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
     */

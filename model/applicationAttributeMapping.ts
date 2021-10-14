@@ -24,11 +24,11 @@ export class ApplicationAttributeMapping {
     /**
     * A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token.
     */
-    'required'?: boolean;
+    'required': boolean;
     /**
     * The time the resource was updated.
     */
@@ -36,7 +36,7 @@ export class ApplicationAttributeMapping {
     /**
     * A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${<source>.<attribute_path>}. The only supported source is user (for example, ${user.id}). This is a required property.
     */
-    'value'?: string;
+    'value': string;
 
     static discriminator: string | undefined = undefined;
 

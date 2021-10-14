@@ -16,7 +16,7 @@ export class EnvironmentLicense {
     /**
     * A string that specifies the active license associated with this environment. This property is required only if your organization has more than one active license.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

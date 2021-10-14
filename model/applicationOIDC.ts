@@ -35,7 +35,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'environment'?: ObjectEnvironment;
     'icon'?: ApplicationIcon;
     /**
@@ -49,11 +49,11 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the name of the application. This is a required property.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
     */
-    'protocol'?: ApplicationOIDC.ProtocolEnum;
+    'protocol': ApplicationOIDC.ProtocolEnum;
     /**
     * An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
     */
@@ -61,7 +61,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
     */
-    'type'?: ApplicationOIDC.TypeEnum;
+    'type': ApplicationOIDC.TypeEnum;
     /**
     * The time the resource was last updated.
     */
@@ -82,7 +82,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
     */
-    'grantTypes'?: Array<ApplicationOIDC.GrantTypesEnum>;
+    'grantTypes': Array<ApplicationOIDC.GrantTypesEnum>;
     /**
     * A string that specifies the custom home page URL for the application.
     */
@@ -114,7 +114,7 @@ export class ApplicationOIDC {
     /**
     * A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
     */
-    'tokenEndpointAuthMethod'?: ApplicationOIDC.TokenEndpointAuthMethodEnum;
+    'tokenEndpointAuthMethod': ApplicationOIDC.TokenEndpointAuthMethodEnum;
 
     static discriminator: string | undefined = undefined;
 

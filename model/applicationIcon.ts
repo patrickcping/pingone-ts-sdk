@@ -16,8 +16,8 @@ import { RequestFile } from './models';
 * The HREF and the ID for the application icon.
 */
 export class ApplicationIcon {
-    'id'?: string;
-    'href'?: string;
+    'id': string;
+    'href': string;
 
     static discriminator: string | undefined = undefined;
 

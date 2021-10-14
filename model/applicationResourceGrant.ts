@@ -25,8 +25,8 @@ export class ApplicationResourceGrant {
     * A string that specifies the application resource grant ID.
     */
     'id'?: string;
-    'resource'?: ApplicationResourceGrantResource;
-    'scopes'?: Array<ApplicationResourceGrantScopes>;
+    'resource': ApplicationResourceGrantResource;
+    'scopes': Array<ApplicationResourceGrantScopes>;
     /**
     * The time the resource was last updated.
     */

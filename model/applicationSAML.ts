@@ -36,7 +36,7 @@ export class ApplicationSAML {
     /**
     * A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'environment'?: ObjectEnvironment;
     'icon'?: ApplicationIcon;
     /**
@@ -50,11 +50,11 @@ export class ApplicationSAML {
     /**
     * A string that specifies the name of the application. This is a required property.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
     */
-    'protocol'?: ApplicationSAML.ProtocolEnum;
+    'protocol': ApplicationSAML.ProtocolEnum;
     /**
     * An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
     */
@@ -62,7 +62,7 @@ export class ApplicationSAML {
     /**
     * A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
     */
-    'type'?: ApplicationSAML.TypeEnum;
+    'type': ApplicationSAML.TypeEnum;
     /**
     * The time the resource was last updated.
     */
@@ -74,11 +74,11 @@ export class ApplicationSAML {
     /**
     * A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
     */
-    'acsUrls'?: Array<string>;
+    'acsUrls': Array<string>;
     /**
     * An integer that specifies the assertion validity duration in seconds. This is a required property.
     */
-    'assertionDuration'?: number;
+    'assertionDuration': number;
     /**
     * A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
     */
@@ -107,7 +107,7 @@ export class ApplicationSAML {
     /**
     * A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
     */
-    'spEntityId'?: string;
+    'spEntityId': string;
     'spVerification'?: ApplicationSAMLAllOfSpVerification;
 
     static discriminator: string | undefined = undefined;

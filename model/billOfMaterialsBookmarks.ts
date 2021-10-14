@@ -16,11 +16,11 @@ export class BillOfMaterialsBookmarks {
     /**
     * Name of the custom bookmark. The name must be unique among the product bookmarks and be 50 characters or fewer.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A valid URL for the bookmark.
     */
-    'href'?: string;
+    'href': string;
 
     static discriminator: string | undefined = undefined;
 

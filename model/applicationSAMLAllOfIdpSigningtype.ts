@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { ApplicationSAMLAllOfIdpSigningtypeKey } from './applicationSAMLAllOfIdpSigningtypeKey';
 
 export class ApplicationSAMLAllOfIdpSigningtype {
-    'key'?: ApplicationSAMLAllOfIdpSigningtypeKey;
+    'key': ApplicationSAMLAllOfIdpSigningtypeKey;
 
     static discriminator: string | undefined = undefined;
 

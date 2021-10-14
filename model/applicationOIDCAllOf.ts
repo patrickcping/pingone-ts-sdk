@@ -26,7 +26,7 @@ export class ApplicationOIDCAllOf {
     /**
     * A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
     */
-    'grantTypes'?: Array<ApplicationOIDCAllOf.GrantTypesEnum>;
+    'grantTypes': Array<ApplicationOIDCAllOf.GrantTypesEnum>;
     /**
     * A string that specifies the custom home page URL for the application.
     */
@@ -58,7 +58,7 @@ export class ApplicationOIDCAllOf {
     /**
     * A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST.
     */
-    'tokenEndpointAuthMethod'?: ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum;
+    'tokenEndpointAuthMethod': ApplicationOIDCAllOf.TokenEndpointAuthMethodEnum;
 
     static discriminator: string | undefined = undefined;
 

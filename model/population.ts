@@ -28,7 +28,7 @@ export class Population {
     /**
     * A string that specifies the population name, which must be provided and must be unique within an environment.
     */
-    'name'?: string;
+    'name': string;
     /**
     * The time the resource was last updated.
     */

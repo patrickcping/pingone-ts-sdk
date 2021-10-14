@@ -26,7 +26,7 @@ export class Group {
     /**
     * The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{envID}/groups. Retrieve all the group names associated with a user with GET /environments/{envID}/users/{userID}?include=memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A SCIM filter that determines which users are dynamically added to the group. For more information, see Adding users to a group and Removing users from a group.
     */

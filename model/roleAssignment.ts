@@ -25,8 +25,8 @@ export class RoleAssignment {
     * A boolean that specifies whether this role assignment can be deleted by the current actor.
     */
     'readOnly'?: boolean;
-    'role'?: RoleAssignmentRole;
-    'scope'?: RoleAssignmentScope;
+    'role': RoleAssignmentRole;
+    'scope': RoleAssignmentScope;
 
     static discriminator: string | undefined = undefined;
 

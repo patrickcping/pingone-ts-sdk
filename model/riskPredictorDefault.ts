@@ -17,8 +17,8 @@ export class RiskPredictorDefault {
     /**
     * An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
     */
-    'weight'?: number;
-    'result'?: RiskPredictorDefaultResult;
+    'weight': number;
+    'result': RiskPredictorDefaultResult;
 
     static discriminator: string | undefined = undefined;
 

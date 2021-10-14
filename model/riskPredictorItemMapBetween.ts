@@ -16,8 +16,8 @@ import { RequestFile } from './models';
 * Minimum and maximum boundaries
 */
 export class RiskPredictorItemMapBetween {
-    'minScore'?: number;
-    'maxScore'?: number;
+    'minScore': number;
+    'maxScore': number;
 
     static discriminator: string | undefined = undefined;
 

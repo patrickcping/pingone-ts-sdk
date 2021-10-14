@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 export class RiskPolicyResult {
-    'level'?: RiskPolicyResult.LevelEnum;
+    'level': RiskPolicyResult.LevelEnum;
     'type'?: RiskPolicyResult.TypeEnum;
 
     static discriminator: string | undefined = undefined;

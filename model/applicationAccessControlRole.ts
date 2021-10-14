@@ -16,7 +16,7 @@ export class ApplicationAccessControlRole {
     /**
     * A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
     */
-    'type'?: string;
+    'type': string;
 
     static discriminator: string | undefined = undefined;
 

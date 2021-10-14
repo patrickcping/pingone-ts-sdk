@@ -38,7 +38,7 @@ export class Resource {
     /**
     * A string that specifies the resource name, which must be provided and must be unique within an environment.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne.
     */

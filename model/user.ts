@@ -32,7 +32,7 @@ export class User {
     /**
     * A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format.
     */
-    'email'?: string;
+    'email': string;
     /**
     * A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created.
     */
@@ -76,7 +76,7 @@ export class User {
     'nickname'?: string;
     'password'?: UserPassword;
     'photo'?: UserPhoto;
-    'population'?: UserPopulation;
+    'population': UserPopulation;
     /**
     * A string that specifies the user’s preferred written or spoken languages, which are optional. This may be explicitly set to null when updating a user to unset it. If provided, the format of the value must be a valid language range and the same as the HTTP Accept-Language header field (not including Accept-Language:) and is specified in Section 5.3.5 of RFC 7231. For example en-US, en-gb;q=0.8, en;q=0.7.
     */
@@ -104,7 +104,7 @@ export class User {
     /**
     * A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex ^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$). It can have a length of no more than 128 characters (min/max=1/128).
     */
-    'username'?: string;
+    'username': string;
     /**
     * Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
     */

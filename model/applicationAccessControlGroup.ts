@@ -16,11 +16,11 @@ export class ApplicationAccessControlGroup {
     /**
     * A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
     */
-    'type'?: string;
+    'type': string;
     /**
     * A set that specifies the group IDs for the groups the actor must belong to for access to the application.
     */
-    'groups'?: Array<string>;
+    'groups': Array<string>;
 
     static discriminator: string | undefined = undefined;
 

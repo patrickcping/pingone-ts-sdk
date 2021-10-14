@@ -22,15 +22,15 @@ export class RiskPredictor {
     /**
     * A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
     */
-    'compactName'?: string;
+    'compactName': string;
     /**
     * An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
     */
-    'type'?: RiskPredictor.TypeEnum;
+    'type': RiskPredictor.TypeEnum;
     /**
     * A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
     */

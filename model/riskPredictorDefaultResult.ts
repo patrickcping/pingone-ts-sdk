@@ -19,7 +19,7 @@ export class RiskPredictorDefaultResult {
     /**
     * A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW.
     */
-    'level'?: RiskPredictorDefaultResult.LevelEnum;
+    'level': RiskPredictorDefaultResult.LevelEnum;
     'type'?: RiskPredictorDefaultResult.TypeEnum;
 
     static discriminator: string | undefined = undefined;

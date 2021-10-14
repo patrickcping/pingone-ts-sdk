@@ -16,11 +16,11 @@ export class RoleAssignmentScope {
     /**
     * A string that specifies the role assignment scope ID.
     */
-    'id'?: string;
+    'id': string;
     /**
     * A string that specifies the type of resource defining the scope of the Role assignment. Options are ORGANIZATION, ENVIRONMENT, and POPULATION.
     */
-    'type'?: RoleAssignmentScope.TypeEnum;
+    'type': RoleAssignmentScope.TypeEnum;
 
     static discriminator: string | undefined = undefined;
 

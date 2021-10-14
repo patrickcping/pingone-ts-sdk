@@ -16,7 +16,7 @@ export class RoleAssignmentRole {
     /**
     * A string that specifies the role ID.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

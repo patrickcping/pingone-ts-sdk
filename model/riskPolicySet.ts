@@ -37,7 +37,7 @@ export class RiskPolicySet {
     /**
     * A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
     */
-    'name'?: string;
+    'name': string;
     /**
     * An array of policies related to this policy set.
     */

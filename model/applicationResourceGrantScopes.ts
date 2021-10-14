@@ -16,7 +16,7 @@ export class ApplicationResourceGrantScopes {
     /**
     * id A array that specifies the IDs of the scopes associated with this grant. This is a required property.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

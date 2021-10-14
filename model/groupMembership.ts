@@ -16,7 +16,7 @@ export class GroupMembership {
     /**
     * ID of the group to assign
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

@@ -16,7 +16,7 @@ export class UserPopulation {
     /**
     * A string that specifies the identifier of the population resource associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{envID}}/users/{{userID}}. However, it can be updated using PUT /environments/{{envID}}/users/{{userID}}/population.
     */
-    'id'?: string;
+    'id': string;
 
     static discriminator: string | undefined = undefined;
 

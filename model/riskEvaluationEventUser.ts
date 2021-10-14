@@ -17,7 +17,7 @@ export class RiskEvaluationEventUser {
     /**
     * A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property.
     */
-    'id'?: string;
+    'id': string;
     /**
     * A string that specifies the name of the user associated with the event (maximum size 1024 characters).
     */
@@ -25,7 +25,7 @@ export class RiskEvaluationEventUser {
     /**
     * A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property.
     */
-    'type'?: RiskEvaluationEventUser.TypeEnum;
+    'type': RiskEvaluationEventUser.TypeEnum;
     /**
     * An array of group names.
     */

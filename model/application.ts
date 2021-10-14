@@ -32,7 +32,7 @@ export class Application {
     /**
     * A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'environment'?: ObjectEnvironment;
     'icon'?: ApplicationIcon;
     /**
@@ -46,11 +46,11 @@ export class Application {
     /**
     * A string that specifies the name of the application. This is a required property.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML.
     */
-    'protocol'?: Application.ProtocolEnum;
+    'protocol': Application.ProtocolEnum;
     /**
     * An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
     */
@@ -58,7 +58,7 @@ export class Application {
     /**
     * A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
     */
-    'type'?: Application.TypeEnum;
+    'type': Application.TypeEnum;
     /**
     * The time the resource was last updated.
     */

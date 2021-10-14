@@ -18,11 +18,11 @@ export class ApplicationSAMLAllOf {
     /**
     * A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
     */
-    'acsUrls'?: Array<string>;
+    'acsUrls': Array<string>;
     /**
     * An integer that specifies the assertion validity duration in seconds. This is a required property.
     */
-    'assertionDuration'?: number;
+    'assertionDuration': number;
     /**
     * A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
     */
@@ -51,7 +51,7 @@ export class ApplicationSAMLAllOf {
     /**
     * A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
     */
-    'spEntityId'?: string;
+    'spEntityId': string;
     'spVerification'?: ApplicationSAMLAllOfSpVerification;
 
     static discriminator: string | undefined = undefined;
