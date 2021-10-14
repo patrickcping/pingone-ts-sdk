@@ -12,14 +12,8 @@
 
 import { RequestFile } from './models';
 
-/**
-* The population to assign the group to
-*/
-export class GroupPopulation {
-    /**
-    * The population ID
-    */
-    'id': string;
+export class ResourceResource {
+    'id'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,7 +25,7 @@ export class GroupPopulation {
         }    ];
 
     static getAttributeTypeMap() {
-        return GroupPopulation.attributeTypeMap;
+        return ResourceResource.attributeTypeMap;
     }
 }
 

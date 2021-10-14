@@ -20,6 +20,8 @@ import { Group } from './group';
 import { GroupMembership } from './groupMembership';
 import { Population } from './population';
 import { Resource } from './resource';
+import { ResourceAttribute } from './resourceAttribute';
+import { ResourceScope } from './resourceScope';
 import { RiskPolicySet } from './riskPolicySet';
 import { RiskPredictor } from './riskPredictor';
 import { Role } from './role';
@@ -29,7 +31,7 @@ import { SchemaAttribute } from './schemaAttribute';
 import { User } from './user';
 
 export class EntityArrayEmbedded {
-    'attributes'?: Array<ApplicationAttributeMapping | SchemaAttribute>;
+    'attributes'?: Array<ApplicationAttributeMapping | SchemaAttribute | ResourceAttribute>;
     'applications'?: Array<ApplicationSAML | ApplicationOIDC>;
     'environments'?: Array<Environment>;
     'grants'?: Array<ApplicationResourceGrant>;
@@ -37,6 +39,7 @@ export class EntityArrayEmbedded {
     'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
     'resources'?: Array<Resource>;
+    'scopes'?: Array<ResourceScope>;
     'riskPolicySets'?: Array<RiskPolicySet>;
     'riskPredictors'?: Array<RiskPredictor>;
     'roleAssignments'?: Array<RoleAssignment>;
@@ -50,7 +53,7 @@ export class EntityArrayEmbedded {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "Array<ApplicationAttributeMapping | SchemaAttribute>"
+            "type": "Array<ApplicationAttributeMapping | SchemaAttribute | ResourceAttribute>"
         },
         {
             "name": "applications",
@@ -86,6 +89,11 @@ export class EntityArrayEmbedded {
             "name": "resources",
             "baseName": "resources",
             "type": "Array<Resource>"
+        },
+        {
+            "name": "scopes",
+            "baseName": "scopes",
+            "type": "Array<ResourceScope>"
         },
         {
             "name": "riskPolicySets",

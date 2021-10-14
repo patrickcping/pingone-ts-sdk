@@ -82,6 +82,7 @@ git_push.sh
 model/application.ts
 model/applicationAccessControl.ts
 model/applicationAccessControlGroup.ts
+model/applicationAccessControlGroupGroups.ts
 model/applicationAccessControlRole.ts
 model/applicationAttributeMapping.ts
 model/applicationIcon.ts
@@ -124,6 +125,9 @@ model/p1Error.ts
 model/p1ErrorDetails.ts
 model/population.ts
 model/resource.ts
+model/resourceAttribute.ts
+model/resourceResource.ts
+model/resourceScope.ts
 model/riskEvaluation.ts
 model/riskEvaluationDetails.ts
 model/riskEvaluationDetailsIpAddressReputation.ts

@@ -3,6 +3,7 @@ import localVarRequest from 'request';
 export * from './application';
 export * from './applicationAccessControl';
 export * from './applicationAccessControlGroup';
+export * from './applicationAccessControlGroupGroups';
 export * from './applicationAccessControlRole';
 export * from './applicationAttributeMapping';
 export * from './applicationIcon';
@@ -44,6 +45,9 @@ export * from './p1Error';
 export * from './p1ErrorDetails';
 export * from './population';
 export * from './resource';
+export * from './resourceAttribute';
+export * from './resourceResource';
+export * from './resourceScope';
 export * from './riskEvaluation';
 export * from './riskEvaluationDetails';
 export * from './riskEvaluationDetailsIpAddressReputation';
@@ -117,6 +121,7 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 import { Application } from './application';
 import { ApplicationAccessControl } from './applicationAccessControl';
 import { ApplicationAccessControlGroup } from './applicationAccessControlGroup';
+import { ApplicationAccessControlGroupGroups } from './applicationAccessControlGroupGroups';
 import { ApplicationAccessControlRole } from './applicationAccessControlRole';
 import { ApplicationAttributeMapping } from './applicationAttributeMapping';
 import { ApplicationIcon } from './applicationIcon';
@@ -158,6 +163,9 @@ import { P1Error } from './p1Error';
 import { P1ErrorDetails } from './p1ErrorDetails';
 import { Population } from './population';
 import { Resource } from './resource';
+import { ResourceAttribute } from './resourceAttribute';
+import { ResourceResource } from './resourceResource';
+import { ResourceScope } from './resourceScope';
 import { RiskEvaluation } from './riskEvaluation';
 import { RiskEvaluationDetails } from './riskEvaluationDetails';
 import { RiskEvaluationDetailsIpAddressReputation } from './riskEvaluationDetailsIpAddressReputation';
@@ -255,6 +263,7 @@ let enumsMap: {[index: string]: any} = {
         "Environment.TypeEnum": Environment.TypeEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
         "Resource.TypeEnum": Resource.TypeEnum,
+        "ResourceAttribute.TypeEnum": ResourceAttribute.TypeEnum,
         "RiskEvaluationDetailsIpAddressReputation.LevelEnum": RiskEvaluationDetailsIpAddressReputation.LevelEnum,
         "RiskEvaluationDetailsIpVelocityByUser.LevelEnum": RiskEvaluationDetailsIpVelocityByUser.LevelEnum,
         "RiskEvaluationDetailsIpVelocityByUserThreshold.SourceEnum": RiskEvaluationDetailsIpVelocityByUserThreshold.SourceEnum,
@@ -284,6 +293,7 @@ let typeMap: {[index: string]: any} = {
     "Application": Application,
     "ApplicationAccessControl": ApplicationAccessControl,
     "ApplicationAccessControlGroup": ApplicationAccessControlGroup,
+    "ApplicationAccessControlGroupGroups": ApplicationAccessControlGroupGroups,
     "ApplicationAccessControlRole": ApplicationAccessControlRole,
     "ApplicationAttributeMapping": ApplicationAttributeMapping,
     "ApplicationIcon": ApplicationIcon,
@@ -325,6 +335,9 @@ let typeMap: {[index: string]: any} = {
     "P1ErrorDetails": P1ErrorDetails,
     "Population": Population,
     "Resource": Resource,
+    "ResourceAttribute": ResourceAttribute,
+    "ResourceResource": ResourceResource,
+    "ResourceScope": ResourceScope,
     "RiskEvaluation": RiskEvaluation,
     "RiskEvaluationDetails": RiskEvaluationDetails,
     "RiskEvaluationDetailsIpAddressReputation": RiskEvaluationDetailsIpAddressReputation,

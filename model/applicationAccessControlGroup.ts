@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { ApplicationAccessControlGroupGroups } from './applicationAccessControlGroupGroups';
 
 export class ApplicationAccessControlGroup {
     /**
@@ -20,7 +21,7 @@ export class ApplicationAccessControlGroup {
     /**
     * A set that specifies the group IDs for the groups the actor must belong to for access to the application.
     */
-    'groups': Array<string>;
+    'groups': Array<ApplicationAccessControlGroupGroups>;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,7 +34,7 @@ export class ApplicationAccessControlGroup {
         {
             "name": "groups",
             "baseName": "groups",
-            "type": "Array<string>"
+            "type": "Array<ApplicationAccessControlGroupGroups>"
         }    ];
 
     static getAttributeTypeMap() {

@@ -12,6 +12,7 @@
 
 import { RequestFile } from './models';
 import { ObjectEnvironment } from './objectEnvironment';
+import { ResourceResource } from './resourceResource';
 
 export class Resource {
     /**
@@ -31,6 +32,7 @@ export class Resource {
     */
     'description'?: string;
     'environment'?: ObjectEnvironment;
+    'resource'?: ResourceResource;
     /**
     * A string that specifies the resource’s unique identifier.
     */
@@ -75,6 +77,11 @@ export class Resource {
             "name": "environment",
             "baseName": "environment",
             "type": "ObjectEnvironment"
+        },
+        {
+            "name": "resource",
+            "baseName": "resource",
+            "type": "ResourceResource"
         },
         {
             "name": "id",
