@@ -180,13 +180,13 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
      * @summary DELETE Application Attribute Mapping
      * @param envID 
      * @param appID 
-     * @param samlAttrID 
+     * @param attrMappingID 
      */
-    public async deleteApplicationAttributeMapping (envID: string, appID: string, samlAttrID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}'
+    public async deleteApplicationAttributeMapping (envID: string, appID: string, attrMappingID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
-            .replace('{' + 'samlAttrID' + '}', encodeURIComponent(String(samlAttrID)));
+            .replace('{' + 'attrMappingID' + '}', encodeURIComponent(String(attrMappingID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -208,9 +208,9 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
             throw new Error('Required parameter appID was null or undefined when calling deleteApplicationAttributeMapping.');
         }
 
-        // verify required parameter 'samlAttrID' is not null or undefined
-        if (samlAttrID === null || samlAttrID === undefined) {
-            throw new Error('Required parameter samlAttrID was null or undefined when calling deleteApplicationAttributeMapping.');
+        // verify required parameter 'attrMappingID' is not null or undefined
+        if (attrMappingID === null || attrMappingID === undefined) {
+            throw new Error('Required parameter attrMappingID was null or undefined when calling deleteApplicationAttributeMapping.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -344,13 +344,13 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
      * @summary READ One Application Attribute Mapping
      * @param envID 
      * @param appID 
-     * @param samlAttrID 
+     * @param attrMappingID 
      */
-    public async readOneApplicationAttributeMapping (envID: string, appID: string, samlAttrID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}'
+    public async readOneApplicationAttributeMapping (envID: string, appID: string, attrMappingID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
-            .replace('{' + 'samlAttrID' + '}', encodeURIComponent(String(samlAttrID)));
+            .replace('{' + 'attrMappingID' + '}', encodeURIComponent(String(attrMappingID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -372,9 +372,9 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
             throw new Error('Required parameter appID was null or undefined when calling readOneApplicationAttributeMapping.');
         }
 
-        // verify required parameter 'samlAttrID' is not null or undefined
-        if (samlAttrID === null || samlAttrID === undefined) {
-            throw new Error('Required parameter samlAttrID was null or undefined when calling readOneApplicationAttributeMapping.');
+        // verify required parameter 'attrMappingID' is not null or undefined
+        if (attrMappingID === null || attrMappingID === undefined) {
+            throw new Error('Required parameter attrMappingID was null or undefined when calling readOneApplicationAttributeMapping.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -430,14 +430,14 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
      * @summary UPDATE Application Attribute Mapping
      * @param envID 
      * @param appID 
-     * @param samlAttrID 
+     * @param attrMappingID 
      * @param applicationAttributeMapping 
      */
-    public async updateApplicationAttributeMapping (envID: string, appID: string, samlAttrID: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{samlAttrID}'
+    public async updateApplicationAttributeMapping (envID: string, appID: string, attrMappingID: string, applicationAttributeMapping?: ApplicationAttributeMapping, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationAttributeMapping;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/attributes/{attrMappingID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
-            .replace('{' + 'samlAttrID' + '}', encodeURIComponent(String(samlAttrID)));
+            .replace('{' + 'attrMappingID' + '}', encodeURIComponent(String(attrMappingID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -459,9 +459,9 @@ export class ManagementAPIsApplicationsApplicationAttributeMappingApi {
             throw new Error('Required parameter appID was null or undefined when calling updateApplicationAttributeMapping.');
         }
 
-        // verify required parameter 'samlAttrID' is not null or undefined
-        if (samlAttrID === null || samlAttrID === undefined) {
-            throw new Error('Required parameter samlAttrID was null or undefined when calling updateApplicationAttributeMapping.');
+        // verify required parameter 'attrMappingID' is not null or undefined
+        if (attrMappingID === null || attrMappingID === undefined) {
+            throw new Error('Required parameter attrMappingID was null or undefined when calling updateApplicationAttributeMapping.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

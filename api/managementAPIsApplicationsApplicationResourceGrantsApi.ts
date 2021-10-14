@@ -101,7 +101,7 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
      * @param appID 
      * @param applicationResourceGrant 
      */
-    public async createGrant (envID: string, appID: string, applicationResourceGrant?: ApplicationResourceGrant, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
+    public async createApplicationGrant (envID: string, appID: string, applicationResourceGrant?: ApplicationResourceGrant, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -118,12 +118,12 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling createGrant.');
+            throw new Error('Required parameter envID was null or undefined when calling createApplicationGrant.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling createGrant.');
+            throw new Error('Required parameter appID was null or undefined when calling createApplicationGrant.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -177,11 +177,96 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary DELETE Grant
+     * @param envID 
+     * @param appID 
+     * @param grantID 
+     */
+    public async deleteApplicationGrant (envID: string, appID: string, grantID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants/{grantID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
+            .replace('{' + 'grantID' + '}', encodeURIComponent(String(grantID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling deleteApplicationGrant.');
+        }
+
+        // verify required parameter 'appID' is not null or undefined
+        if (appID === null || appID === undefined) {
+            throw new Error('Required parameter appID was null or undefined when calling deleteApplicationGrant.');
+        }
+
+        // verify required parameter 'grantID' is not null or undefined
+        if (grantID === null || grantID === undefined) {
+            throw new Error('Required parameter grantID was null or undefined when calling deleteApplicationGrant.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary READ All Grants for an Application
      * @param envID 
      * @param appID 
      */
-    public async readAllGrantsForAnApplication (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+    public async readAllApplicationGrants (envID: string, appID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)));
@@ -198,12 +283,12 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling readAllGrantsForAnApplication.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllApplicationGrants.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling readAllGrantsForAnApplication.');
+            throw new Error('Required parameter appID was null or undefined when calling readAllApplicationGrants.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -256,97 +341,12 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary DELETE Grant
-     * @param envID 
-     * @param appID 
-     * @param grantID 
-     */
-    public async v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete (envID: string, appID: string, grantID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants/{grantID}'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
-            .replace('{' + 'grantID' + '}', encodeURIComponent(String(grantID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete.');
-        }
-
-        // verify required parameter 'appID' is not null or undefined
-        if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete.');
-        }
-
-        // verify required parameter 'grantID' is not null or undefined
-        if (grantID === null || grantID === undefined) {
-            throw new Error('Required parameter grantID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDDelete.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
      * @summary READ One Grant for an Application
      * @param envID 
      * @param appID 
      * @param grantID 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet (envID: string, appID: string, grantID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneApplicationGrant (envID: string, appID: string, grantID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants/{grantID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
@@ -364,17 +364,17 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneApplicationGrant.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet.');
+            throw new Error('Required parameter appID was null or undefined when calling readOneApplicationGrant.');
         }
 
         // verify required parameter 'grantID' is not null or undefined
         if (grantID === null || grantID === undefined) {
-            throw new Error('Required parameter grantID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDGet.');
+            throw new Error('Required parameter grantID was null or undefined when calling readOneApplicationGrant.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -409,11 +409,12 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "ApplicationResourceGrant");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -430,9 +431,9 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
      * @param envID 
      * @param appID 
      * @param grantID 
-     * @param body 
+     * @param applicationResourceGrant 
      */
-    public async v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut (envID: string, appID: string, grantID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateApplicationGrant (envID: string, appID: string, grantID: string, applicationResourceGrant?: ApplicationResourceGrant, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/applications/{appID}/grants/{grantID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'appID' + '}', encodeURIComponent(String(appID)))
@@ -450,17 +451,17 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut.');
+            throw new Error('Required parameter envID was null or undefined when calling updateApplicationGrant.');
         }
 
         // verify required parameter 'appID' is not null or undefined
         if (appID === null || appID === undefined) {
-            throw new Error('Required parameter appID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut.');
+            throw new Error('Required parameter appID was null or undefined when calling updateApplicationGrant.');
         }
 
         // verify required parameter 'grantID' is not null or undefined
         if (grantID === null || grantID === undefined) {
-            throw new Error('Required parameter grantID was null or undefined when calling v1EnvironmentsEnvIDApplicationsAppIDGrantsGrantIDPut.');
+            throw new Error('Required parameter grantID was null or undefined when calling updateApplicationGrant.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -474,7 +475,7 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "object")
+            body: ObjectSerializer.serialize(applicationResourceGrant, "ApplicationResourceGrant")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -496,11 +497,12 @@ export class ManagementAPIsApplicationsApplicationResourceGrantsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationResourceGrant;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "ApplicationResourceGrant");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

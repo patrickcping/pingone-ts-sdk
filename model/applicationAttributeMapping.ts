@@ -14,6 +14,10 @@ import { RequestFile } from './models';
 
 export class ApplicationAttributeMapping {
     /**
+    * A string that specifies the application ID.
+    */
+    'id'?: string;
+    /**
     * The time the resource was created.
     */
     'createdAt'?: string;
@@ -41,6 +45,11 @@ export class ApplicationAttributeMapping {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
+        },
         {
             "name": "createdAt",
             "baseName": "createdAt",
