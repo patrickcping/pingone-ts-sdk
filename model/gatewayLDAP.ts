@@ -40,7 +40,7 @@ export class GatewayLDAP {
     /**
     * A boolean that specifies whether the gateway is enabled. This is a required property.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'supportedVersions'?: GatewaySupportedVersions;
     /**
     * A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).

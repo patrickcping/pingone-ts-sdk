@@ -37,7 +37,7 @@ export class Gateway {
     /**
     * A boolean that specifies whether the gateway is enabled. This is a required property.
     */
-    'enabled'?: boolean;
+    'enabled': boolean;
     'supportedVersions'?: GatewaySupportedVersions;
 
     static discriminator: string | undefined = undefined;

@@ -288,6 +288,7 @@ let enumsMap: {[index: string]: any} = {
         "Environment.RegionEnum": Environment.RegionEnum,
         "Environment.TypeEnum": Environment.TypeEnum,
         "Gateway.TypeEnum": Gateway.TypeEnum,
+        "GatewayCredential.GatewayTypeEnum": GatewayCredential.GatewayTypeEnum,
         "GatewayInstance.HealthStatusEnum": GatewayInstance.HealthStatusEnum,
         "GatewayInstanceVersion.UpdateStatusEnum": GatewayInstanceVersion.UpdateStatusEnum,
         "GatewayLDAP.TypeEnum": GatewayLDAP.TypeEnum,

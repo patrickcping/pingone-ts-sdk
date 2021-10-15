@@ -22,13 +22,20 @@ export class GatewayCredential {
     */
     'createdAt'?: string;
     /**
+    * A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property.
+    */
+    'gatewayType'?: GatewayCredential.GatewayTypeEnum;
+    /**
     * A date that specifies the date the credential was last used in UTC. This is a required property.
     */
     'lastUsedAt'?: string;
+    'consoleUrl'?: string;
+    'apiUrl'?: string;
+    'authUrl'?: string;
     /**
     * A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created.
     */
-    'token'?: string;
+    'credential'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -44,13 +51,33 @@ export class GatewayCredential {
             "type": "string"
         },
         {
+            "name": "gatewayType",
+            "baseName": "gatewayType",
+            "type": "GatewayCredential.GatewayTypeEnum"
+        },
+        {
             "name": "lastUsedAt",
             "baseName": "lastUsedAt",
             "type": "string"
         },
         {
-            "name": "token",
-            "baseName": "token",
+            "name": "consoleUrl",
+            "baseName": "consoleUrl",
+            "type": "string"
+        },
+        {
+            "name": "apiUrl",
+            "baseName": "apiUrl",
+            "type": "string"
+        },
+        {
+            "name": "authUrl",
+            "baseName": "authUrl",
+            "type": "string"
+        },
+        {
+            "name": "credential",
+            "baseName": "credential",
             "type": "string"
         }    ];
 
@@ -59,3 +86,10 @@ export class GatewayCredential {
     }
 }
 
+export namespace GatewayCredential {
+    export enum GatewayTypeEnum {
+        Ldap = <any> 'LDAP',
+        PingFederate = <any> 'PING_FEDERATE',
+        PingIntelligence = <any> 'PING_INTELLIGENCE'
+    }
+}

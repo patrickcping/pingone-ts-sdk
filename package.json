@@ -1,6 +1,6 @@
 {
     "name": "pingone-ts-sdk-generated",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "description": "NodeJS client for pingone-ts-sdk-generated",
     "repository": "patrickcping/pingone-ts-sdk",
     "main": "dist/api.js",
