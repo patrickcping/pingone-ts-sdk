@@ -31,7 +31,7 @@ export class Gateway {
     */
     'description'?: string;
     /**
-    * A string that specifies the type of gateway resource. Options are LDAP and PING_FEDERATE. This is a required property.
+    * A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property.
     */
     'type': Gateway.TypeEnum;
     /**
@@ -92,6 +92,7 @@ export class Gateway {
 export namespace Gateway {
     export enum TypeEnum {
         Ldap = <any> 'LDAP',
-        PingFederate = <any> 'PING_FEDERATE'
+        PingFederate = <any> 'PING_FEDERATE',
+        PingIntelligence = <any> 'PING_INTELLIGENCE'
     }
 }
