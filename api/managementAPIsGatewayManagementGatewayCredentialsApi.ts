@@ -15,6 +15,7 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { GatewayCredential } from '../model/gatewayCredential';
 import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -94,16 +95,14 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
 
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary DELETE Gateway Credentials
+     * @summary CREATE Gateway Credentials
      * @param envID 
      * @param gatewayID 
-     * @param credentialID 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete (envID: string, gatewayID: string, credentialID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/credentials/{credentialID}'
+    public async createGatewayCredential (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GatewayCredential;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/credentials'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
-            .replace('{' + 'credentialID' + '}', encodeURIComponent(String(credentialID)));
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -117,17 +116,12 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete.');
+            throw new Error('Required parameter envID was null or undefined when calling createGatewayCredential.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete.');
-        }
-
-        // verify required parameter 'credentialID' is not null or undefined
-        if (credentialID === null || credentialID === undefined) {
-            throw new Error('Required parameter credentialID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsCredentialIDDelete.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling createGatewayCredential.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -135,7 +129,7 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
+            method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
@@ -162,11 +156,12 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GatewayCredential;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "GatewayCredential");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -179,14 +174,16 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary CREATE Gateway Credentials
+     * @summary DELETE Gateway Credentials
      * @param envID 
      * @param gatewayID 
+     * @param credentialID 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/credentials'
+    public async deleteGatewayCredential (envID: string, gatewayID: string, credentialID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/credentials/{credentialID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
+            .replace('{' + 'credentialID' + '}', encodeURIComponent(String(credentialID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -200,12 +197,17 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost.');
+            throw new Error('Required parameter envID was null or undefined when calling deleteGatewayCredential.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDCredentialsPost.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling deleteGatewayCredential.');
+        }
+
+        // verify required parameter 'credentialID' is not null or undefined
+        if (credentialID === null || credentialID === undefined) {
+            throw new Error('Required parameter credentialID was null or undefined when calling deleteGatewayCredential.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -213,7 +215,7 @@ export class ManagementAPIsGatewayManagementGatewayCredentialsApi {
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
+            method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,

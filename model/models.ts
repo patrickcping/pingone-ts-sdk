@@ -32,6 +32,19 @@ export * from './entityArrayEmbedded';
 export * from './environment';
 export * from './environmentLicense';
 export * from './environmentOrganization';
+export * from './gateway';
+export * from './gatewayCredential';
+export * from './gatewayInstance';
+export * from './gatewayInstanceCredential';
+export * from './gatewayInstanceGateway';
+export * from './gatewayInstanceVersion';
+export * from './gatewayLDAP';
+export * from './gatewayLDAPAllOf';
+export * from './gatewayLDAPAllOfNewUserLookup';
+export * from './gatewayLDAPAllOfNewUserLookupAttributeMappings';
+export * from './gatewayLDAPAllOfNewUserLookupPopulation';
+export * from './gatewayLDAPAllOfUserTypes';
+export * from './gatewaySupportedVersions';
 export * from './group';
 export * from './groupDirectMemberCounts';
 export * from './groupMembership';
@@ -150,6 +163,19 @@ import { EntityArrayEmbedded } from './entityArrayEmbedded';
 import { Environment } from './environment';
 import { EnvironmentLicense } from './environmentLicense';
 import { EnvironmentOrganization } from './environmentOrganization';
+import { Gateway } from './gateway';
+import { GatewayCredential } from './gatewayCredential';
+import { GatewayInstance } from './gatewayInstance';
+import { GatewayInstanceCredential } from './gatewayInstanceCredential';
+import { GatewayInstanceGateway } from './gatewayInstanceGateway';
+import { GatewayInstanceVersion } from './gatewayInstanceVersion';
+import { GatewayLDAP } from './gatewayLDAP';
+import { GatewayLDAPAllOf } from './gatewayLDAPAllOf';
+import { GatewayLDAPAllOfNewUserLookup } from './gatewayLDAPAllOfNewUserLookup';
+import { GatewayLDAPAllOfNewUserLookupAttributeMappings } from './gatewayLDAPAllOfNewUserLookupAttributeMappings';
+import { GatewayLDAPAllOfNewUserLookupPopulation } from './gatewayLDAPAllOfNewUserLookupPopulation';
+import { GatewayLDAPAllOfUserTypes } from './gatewayLDAPAllOfUserTypes';
+import { GatewaySupportedVersions } from './gatewaySupportedVersions';
 import { Group } from './group';
 import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
 import { GroupMembership } from './groupMembership';
@@ -261,6 +287,12 @@ let enumsMap: {[index: string]: any} = {
         "BillOfMaterialsProducts.TypeEnum": BillOfMaterialsProducts.TypeEnum,
         "Environment.RegionEnum": Environment.RegionEnum,
         "Environment.TypeEnum": Environment.TypeEnum,
+        "Gateway.TypeEnum": Gateway.TypeEnum,
+        "GatewayInstance.HealthStatusEnum": GatewayInstance.HealthStatusEnum,
+        "GatewayInstanceVersion.UpdateStatusEnum": GatewayInstanceVersion.UpdateStatusEnum,
+        "GatewayLDAP.TypeEnum": GatewayLDAP.TypeEnum,
+        "GatewayLDAP.ConnectionSecurityEnum": GatewayLDAP.ConnectionSecurityEnum,
+        "GatewayLDAPAllOf.ConnectionSecurityEnum": GatewayLDAPAllOf.ConnectionSecurityEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
         "Resource.TypeEnum": Resource.TypeEnum,
         "ResourceAttribute.TypeEnum": ResourceAttribute.TypeEnum,
@@ -322,6 +354,19 @@ let typeMap: {[index: string]: any} = {
     "Environment": Environment,
     "EnvironmentLicense": EnvironmentLicense,
     "EnvironmentOrganization": EnvironmentOrganization,
+    "Gateway": Gateway,
+    "GatewayCredential": GatewayCredential,
+    "GatewayInstance": GatewayInstance,
+    "GatewayInstanceCredential": GatewayInstanceCredential,
+    "GatewayInstanceGateway": GatewayInstanceGateway,
+    "GatewayInstanceVersion": GatewayInstanceVersion,
+    "GatewayLDAP": GatewayLDAP,
+    "GatewayLDAPAllOf": GatewayLDAPAllOf,
+    "GatewayLDAPAllOfNewUserLookup": GatewayLDAPAllOfNewUserLookup,
+    "GatewayLDAPAllOfNewUserLookupAttributeMappings": GatewayLDAPAllOfNewUserLookupAttributeMappings,
+    "GatewayLDAPAllOfNewUserLookupPopulation": GatewayLDAPAllOfNewUserLookupPopulation,
+    "GatewayLDAPAllOfUserTypes": GatewayLDAPAllOfUserTypes,
+    "GatewaySupportedVersions": GatewaySupportedVersions,
     "Group": Group,
     "GroupDirectMemberCounts": GroupDirectMemberCounts,
     "GroupMembership": GroupMembership,

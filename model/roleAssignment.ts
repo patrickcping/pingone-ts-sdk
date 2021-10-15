@@ -11,12 +11,14 @@
  */
 
 import { RequestFile } from './models';
+import { GatewayInstanceGateway } from './gatewayInstanceGateway';
 import { ObjectEnvironment } from './objectEnvironment';
 import { RoleAssignmentRole } from './roleAssignmentRole';
 import { RoleAssignmentScope } from './roleAssignmentScope';
 
 export class RoleAssignment {
     'environment'?: ObjectEnvironment;
+    'gateway'?: GatewayInstanceGateway;
     /**
     * A string that specifies the user role assignment ID.
     */
@@ -35,6 +37,11 @@ export class RoleAssignment {
             "name": "environment",
             "baseName": "environment",
             "type": "ObjectEnvironment"
+        },
+        {
+            "name": "gateway",
+            "baseName": "gateway",
+            "type": "GatewayInstanceGateway"
         },
         {
             "name": "id",

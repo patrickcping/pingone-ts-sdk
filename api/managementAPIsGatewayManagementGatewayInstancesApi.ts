@@ -15,6 +15,8 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
+import { GatewayInstance } from '../model/gatewayInstance';
 import { P1Error } from '../model/p1Error';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -98,7 +100,7 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
      * @param envID 
      * @param gatewayID 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readAllGatewayInstances (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/instances'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
@@ -115,12 +117,12 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readAllGatewayInstances.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDInstancesGet.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling readAllGatewayInstances.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -155,11 +157,12 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -177,7 +180,7 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
      * @param gatewayID 
      * @param instanceID 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet (envID: string, gatewayID: string, instanceID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async readOneGatewayInstance (envID: string, gatewayID: string, instanceID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GatewayInstance;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/instances/{instanceID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
@@ -195,17 +198,17 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneGatewayInstance.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling readOneGatewayInstance.');
         }
 
         // verify required parameter 'instanceID' is not null or undefined
         if (instanceID === null || instanceID === undefined) {
-            throw new Error('Required parameter instanceID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDInstancesInstanceIDGet.');
+            throw new Error('Required parameter instanceID was null or undefined when calling readOneGatewayInstance.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -240,11 +243,12 @@ export class ManagementAPIsGatewayManagementGatewayInstancesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GatewayInstance;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "GatewayInstance");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

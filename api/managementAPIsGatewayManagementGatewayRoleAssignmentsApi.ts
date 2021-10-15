@@ -15,7 +15,9 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { EntityArray } from '../model/entityArray';
 import { P1Error } from '../model/p1Error';
+import { RoleAssignment } from '../model/roleAssignment';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -94,16 +96,15 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
 
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary DELETE Gateway Role Assignment
+     * @summary CREATE Gateway Role Assignments
      * @param envID 
      * @param gatewayID 
-     * @param gatewayRoleAssignmentsID 
+     * @param roleAssignment 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete (envID: string, gatewayID: string, gatewayRoleAssignmentsID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentsID}'
+    public async createGatewayRoleAssignment (envID: string, gatewayID: string, roleAssignment?: RoleAssignment, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
-            .replace('{' + 'gatewayRoleAssignmentsID' + '}', encodeURIComponent(String(gatewayRoleAssignmentsID)));
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -117,17 +118,99 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete.');
+            throw new Error('Required parameter envID was null or undefined when calling createGatewayRoleAssignment.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling createGatewayRoleAssignment.');
         }
 
-        // verify required parameter 'gatewayRoleAssignmentsID' is not null or undefined
-        if (gatewayRoleAssignmentsID === null || gatewayRoleAssignmentsID === undefined) {
-            throw new Error('Required parameter gatewayRoleAssignmentsID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDDelete.');
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(roleAssignment, "RoleAssignment")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "RoleAssignment");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary DELETE Gateway Role Assignment
+     * @param envID 
+     * @param gatewayID 
+     * @param gatewayRoleAssignmentID 
+     */
+    public async deleteGatewayRoleAssignment (envID: string, gatewayID: string, gatewayRoleAssignmentID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
+            .replace('{' + 'gatewayRoleAssignmentID' + '}', encodeURIComponent(String(gatewayRoleAssignmentID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling deleteGatewayRoleAssignment.');
+        }
+
+        // verify required parameter 'gatewayID' is not null or undefined
+        if (gatewayID === null || gatewayID === undefined) {
+            throw new Error('Required parameter gatewayID was null or undefined when calling deleteGatewayRoleAssignment.');
+        }
+
+        // verify required parameter 'gatewayRoleAssignmentID' is not null or undefined
+        if (gatewayRoleAssignmentID === null || gatewayRoleAssignmentID === undefined) {
+            throw new Error('Required parameter gatewayRoleAssignmentID was null or undefined when calling deleteGatewayRoleAssignment.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -179,16 +262,14 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
     }
     /**
      * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ One Gateway Role Assignment
+     * @summary READ Gateway Role Assignments
      * @param envID 
      * @param gatewayID 
-     * @param gatewayRoleAssignmentsID 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet (envID: string, gatewayID: string, gatewayRoleAssignmentsID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentsID}'
+    public async readGatewayRoleAssignments (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EntityArray;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
-            .replace('{' + 'gatewayRoleAssignmentsID' + '}', encodeURIComponent(String(gatewayRoleAssignmentsID)));
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -202,17 +283,12 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet.');
+            throw new Error('Required parameter envID was null or undefined when calling readGatewayRoleAssignments.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet.');
-        }
-
-        // verify required parameter 'gatewayRoleAssignmentsID' is not null or undefined
-        if (gatewayRoleAssignmentsID === null || gatewayRoleAssignmentsID === undefined) {
-            throw new Error('Required parameter gatewayRoleAssignmentsID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDGet.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling readGatewayRoleAssignments.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -247,11 +323,98 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EntityArray;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+                        body = ObjectSerializer.deserialize(body, "EntityArray");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
+     * @summary READ One Gateway Role Assignment
+     * @param envID 
+     * @param gatewayID 
+     * @param gatewayRoleAssignmentID 
+     */
+    public async readOneGatewayRoleAssignment (envID: string, gatewayID: string, gatewayRoleAssignmentID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}'
+            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
+            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
+            .replace('{' + 'gatewayRoleAssignmentID' + '}', encodeURIComponent(String(gatewayRoleAssignmentID)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'envID' is not null or undefined
+        if (envID === null || envID === undefined) {
+            throw new Error('Required parameter envID was null or undefined when calling readOneGatewayRoleAssignment.');
+        }
+
+        // verify required parameter 'gatewayID' is not null or undefined
+        if (gatewayID === null || gatewayID === undefined) {
+            throw new Error('Required parameter gatewayID was null or undefined when calling readOneGatewayRoleAssignment.');
+        }
+
+        // verify required parameter 'gatewayRoleAssignmentID' is not null or undefined
+        if (gatewayRoleAssignmentID === null || gatewayRoleAssignmentID === undefined) {
+            throw new Error('Required parameter gatewayRoleAssignmentID was null or undefined when calling readOneGatewayRoleAssignment.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.bearer.accessToken) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "RoleAssignment");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -267,14 +430,14 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
      * @summary UPDATE Gateway Role Assignments
      * @param envID 
      * @param gatewayID 
-     * @param gatewayRoleAssignmentsID 
+     * @param gatewayRoleAssignmentID 
      * @param body 
      */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut (envID: string, gatewayID: string, gatewayRoleAssignmentsID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentsID}'
+    public async updateGatewayRoleAssignment (envID: string, gatewayID: string, gatewayRoleAssignmentID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
+        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)))
-            .replace('{' + 'gatewayRoleAssignmentsID' + '}', encodeURIComponent(String(gatewayRoleAssignmentsID)));
+            .replace('{' + 'gatewayRoleAssignmentID' + '}', encodeURIComponent(String(gatewayRoleAssignmentID)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -288,17 +451,17 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut.');
+            throw new Error('Required parameter envID was null or undefined when calling updateGatewayRoleAssignment.');
         }
 
         // verify required parameter 'gatewayID' is not null or undefined
         if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut.');
+            throw new Error('Required parameter gatewayID was null or undefined when calling updateGatewayRoleAssignment.');
         }
 
-        // verify required parameter 'gatewayRoleAssignmentsID' is not null or undefined
-        if (gatewayRoleAssignmentsID === null || gatewayRoleAssignmentsID === undefined) {
-            throw new Error('Required parameter gatewayRoleAssignmentsID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGatewayRoleAssignmentsIDPut.');
+        // verify required parameter 'gatewayRoleAssignmentID' is not null or undefined
+        if (gatewayRoleAssignmentID === null || gatewayRoleAssignmentID === undefined) {
+            throw new Error('Required parameter gatewayRoleAssignmentID was null or undefined when calling updateGatewayRoleAssignment.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -334,169 +497,12 @@ export class ManagementAPIsGatewayManagementGatewayRoleAssignmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary READ Gateway Role Assignments
-     * @param envID 
-     * @param gatewayID 
-     */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet (envID: string, gatewayID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet.');
-        }
-
-        // verify required parameter 'gatewayID' is not null or undefined
-        if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsGet.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href=\'https://apidocs.pingidentity.com/pingone/platform/v1/api/\'>apidocs.pingidentity.com</a>.
-     * @summary CREATE Gateway Role Assignments
-     * @param envID 
-     * @param gatewayID 
-     * @param body 
-     */
-    public async v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost (envID: string, gatewayID: string, body?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/v1/environments/{envID}/gateways/{gatewayID}/roleAssignments'
-            .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
-            .replace('{' + 'gatewayID' + '}', encodeURIComponent(String(gatewayID)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'envID' is not null or undefined
-        if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost.');
-        }
-
-        // verify required parameter 'gatewayID' is not null or undefined
-        if (gatewayID === null || gatewayID === undefined) {
-            throw new Error('Required parameter gatewayID was null or undefined when calling v1EnvironmentsEnvIDGatewaysGatewayIDRoleAssignmentsPost.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(body, "object")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
+                        body = ObjectSerializer.deserialize(body, "RoleAssignment");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

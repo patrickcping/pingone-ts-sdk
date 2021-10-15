@@ -16,6 +16,10 @@ import { ApplicationOIDC } from './applicationOIDC';
 import { ApplicationResourceGrant } from './applicationResourceGrant';
 import { ApplicationSAML } from './applicationSAML';
 import { Environment } from './environment';
+import { Gateway } from './gateway';
+import { GatewayCredential } from './gatewayCredential';
+import { GatewayInstance } from './gatewayInstance';
+import { GatewayLDAP } from './gatewayLDAP';
 import { Group } from './group';
 import { GroupMembership } from './groupMembership';
 import { Population } from './population';
@@ -33,7 +37,10 @@ import { User } from './user';
 export class EntityArrayEmbedded {
     'attributes'?: Array<ApplicationAttributeMapping | SchemaAttribute | ResourceAttribute>;
     'applications'?: Array<ApplicationSAML | ApplicationOIDC>;
+    'credentials'?: Array<GatewayCredential>;
     'environments'?: Array<Environment>;
+    'gatewayInstances'?: Array<GatewayInstance>;
+    'gateways'?: Array<Gateway | GatewayLDAP>;
     'grants'?: Array<ApplicationResourceGrant>;
     'groups'?: Array<Group>;
     'groupMemberships'?: Array<GroupMembership>;
@@ -61,9 +68,24 @@ export class EntityArrayEmbedded {
             "type": "Array<ApplicationSAML | ApplicationOIDC>"
         },
         {
+            "name": "credentials",
+            "baseName": "credentials",
+            "type": "Array<GatewayCredential>"
+        },
+        {
             "name": "environments",
             "baseName": "environments",
             "type": "Array<Environment>"
+        },
+        {
+            "name": "gatewayInstances",
+            "baseName": "gatewayInstances",
+            "type": "Array<GatewayInstance>"
+        },
+        {
+            "name": "gateways",
+            "baseName": "gateways",
+            "type": "Array<Gateway | GatewayLDAP>"
         },
         {
             "name": "grants",
