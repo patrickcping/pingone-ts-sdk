@@ -267,7 +267,7 @@ export class ManagementAPIsUsersUserRoleAssignmentsApi {
      * @param userID 
      * @param roleAssignmentID 
      */
-    public async readOneRoleAssignment (envID: string, userID: string, roleAssignmentID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
+    public async readOneUserRoleAssignment (envID: string, userID: string, roleAssignmentID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RoleAssignment;  }> {
         const localVarPath = this.basePath + '/v1/environments/{envID}/users/{userID}/roleAssignments/{roleAssignmentID}'
             .replace('{' + 'envID' + '}', encodeURIComponent(String(envID)))
             .replace('{' + 'userID' + '}', encodeURIComponent(String(userID)))
@@ -285,17 +285,17 @@ export class ManagementAPIsUsersUserRoleAssignmentsApi {
 
         // verify required parameter 'envID' is not null or undefined
         if (envID === null || envID === undefined) {
-            throw new Error('Required parameter envID was null or undefined when calling readOneRoleAssignment.');
+            throw new Error('Required parameter envID was null or undefined when calling readOneUserRoleAssignment.');
         }
 
         // verify required parameter 'userID' is not null or undefined
         if (userID === null || userID === undefined) {
-            throw new Error('Required parameter userID was null or undefined when calling readOneRoleAssignment.');
+            throw new Error('Required parameter userID was null or undefined when calling readOneUserRoleAssignment.');
         }
 
         // verify required parameter 'roleAssignmentID' is not null or undefined
         if (roleAssignmentID === null || roleAssignmentID === undefined) {
-            throw new Error('Required parameter roleAssignmentID was null or undefined when calling readOneRoleAssignment.');
+            throw new Error('Required parameter roleAssignmentID was null or undefined when calling readOneUserRoleAssignment.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
