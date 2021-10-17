@@ -129,8 +129,13 @@ model/groupDirectMemberCounts.ts
 model/groupMembership.ts
 model/groupPopulation.ts
 model/groupTotalMemberCounts.ts
+model/image.ts
+model/imageTargets.ts
 model/inlineObject2.ts
 model/inlineObject3.ts
+model/mFAPushCredential.ts
+model/mFAPushCredentialAPNS.ts
+model/mFAPushCredentialAPNSAllOf.ts
 model/models.ts
 model/objectEnvironment.ts
 model/objectPopulation.ts

@@ -50,8 +50,13 @@ export * from './groupDirectMemberCounts';
 export * from './groupMembership';
 export * from './groupPopulation';
 export * from './groupTotalMemberCounts';
+export * from './image';
+export * from './imageTargets';
 export * from './inlineObject2';
 export * from './inlineObject3';
+export * from './mFAPushCredential';
+export * from './mFAPushCredentialAPNS';
+export * from './mFAPushCredentialAPNSAllOf';
 export * from './objectEnvironment';
 export * from './objectPopulation';
 export * from './p1Error';
@@ -181,8 +186,13 @@ import { GroupDirectMemberCounts } from './groupDirectMemberCounts';
 import { GroupMembership } from './groupMembership';
 import { GroupPopulation } from './groupPopulation';
 import { GroupTotalMemberCounts } from './groupTotalMemberCounts';
+import { Image } from './image';
+import { ImageTargets } from './imageTargets';
 import { InlineObject2 } from './inlineObject2';
 import { InlineObject3 } from './inlineObject3';
+import { MFAPushCredential } from './mFAPushCredential';
+import { MFAPushCredentialAPNS } from './mFAPushCredentialAPNS';
+import { MFAPushCredentialAPNSAllOf } from './mFAPushCredentialAPNSAllOf';
 import { ObjectEnvironment } from './objectEnvironment';
 import { ObjectPopulation } from './objectPopulation';
 import { P1Error } from './p1Error';
@@ -294,7 +304,10 @@ let enumsMap: {[index: string]: any} = {
         "GatewayLDAP.TypeEnum": GatewayLDAP.TypeEnum,
         "GatewayLDAP.ConnectionSecurityEnum": GatewayLDAP.ConnectionSecurityEnum,
         "GatewayLDAPAllOf.ConnectionSecurityEnum": GatewayLDAPAllOf.ConnectionSecurityEnum,
+        "ImageTargets.TypeEnum": ImageTargets.TypeEnum,
         "InlineObject2.TypeEnum": InlineObject2.TypeEnum,
+        "MFAPushCredential.TypeEnum": MFAPushCredential.TypeEnum,
+        "MFAPushCredentialAPNS.TypeEnum": MFAPushCredentialAPNS.TypeEnum,
         "Resource.TypeEnum": Resource.TypeEnum,
         "ResourceAttribute.TypeEnum": ResourceAttribute.TypeEnum,
         "RiskEvaluationDetailsIpAddressReputation.LevelEnum": RiskEvaluationDetailsIpAddressReputation.LevelEnum,
@@ -373,8 +386,13 @@ let typeMap: {[index: string]: any} = {
     "GroupMembership": GroupMembership,
     "GroupPopulation": GroupPopulation,
     "GroupTotalMemberCounts": GroupTotalMemberCounts,
+    "Image": Image,
+    "ImageTargets": ImageTargets,
     "InlineObject2": InlineObject2,
     "InlineObject3": InlineObject3,
+    "MFAPushCredential": MFAPushCredential,
+    "MFAPushCredentialAPNS": MFAPushCredentialAPNS,
+    "MFAPushCredentialAPNSAllOf": MFAPushCredentialAPNSAllOf,
     "ObjectEnvironment": ObjectEnvironment,
     "ObjectPopulation": ObjectPopulation,
     "P1Error": P1Error,

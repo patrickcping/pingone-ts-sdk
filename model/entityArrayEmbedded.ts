@@ -22,6 +22,8 @@ import { GatewayInstance } from './gatewayInstance';
 import { GatewayLDAP } from './gatewayLDAP';
 import { Group } from './group';
 import { GroupMembership } from './groupMembership';
+import { MFAPushCredential } from './mFAPushCredential';
+import { MFAPushCredentialAPNS } from './mFAPushCredentialAPNS';
 import { Population } from './population';
 import { Resource } from './resource';
 import { ResourceAttribute } from './resourceAttribute';
@@ -45,6 +47,7 @@ export class EntityArrayEmbedded {
     'groups'?: Array<Group>;
     'groupMemberships'?: Array<GroupMembership>;
     'populations'?: Array<Population>;
+    'pushCredentials'?: Array<MFAPushCredentialAPNS | MFAPushCredential>;
     'resources'?: Array<Resource>;
     'scopes'?: Array<ResourceScope>;
     'riskPolicySets'?: Array<RiskPolicySet>;
@@ -106,6 +109,11 @@ export class EntityArrayEmbedded {
             "name": "populations",
             "baseName": "populations",
             "type": "Array<Population>"
+        },
+        {
+            "name": "pushCredentials",
+            "baseName": "pushCredentials",
+            "type": "Array<MFAPushCredentialAPNS | MFAPushCredential>"
         },
         {
             "name": "resources",
