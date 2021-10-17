@@ -18,6 +18,8 @@ import { RiskPolicySetConditionBetween } from './riskPolicySetConditionBetween';
 * The condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
 */
 export class RiskPolicySetCondition {
+    'contains'?: string;
+    'ipRange'?: Array<string>;
     'value'?: string;
     'equals'?: string | boolean;
     'aggregatedWeights'?: Array<RiskPolicySetConditionAggregatedWeights>;
@@ -26,6 +28,16 @@ export class RiskPolicySetCondition {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "contains",
+            "baseName": "contains",
+            "type": "string"
+        },
+        {
+            "name": "ipRange",
+            "baseName": "ipRange",
+            "type": "Array<string>"
+        },
         {
             "name": "value",
             "baseName": "value",

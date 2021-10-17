@@ -15,6 +15,7 @@ import { RequestFile } from './models';
 export class RiskPolicyResult {
     'level': RiskPolicyResult.LevelEnum;
     'type'?: RiskPolicyResult.TypeEnum;
+    'value'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,6 +29,11 @@ export class RiskPolicyResult {
             "name": "type",
             "baseName": "type",
             "type": "RiskPolicyResult.TypeEnum"
+        },
+        {
+            "name": "value",
+            "baseName": "value",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {

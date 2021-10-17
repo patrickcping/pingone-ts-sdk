@@ -13,8 +13,8 @@
 import { RequestFile } from './models';
 
 export class RiskPolicySetConditionAggregatedWeights {
-    'value'?: string;
-    'weight'?: number;
+    'value': string;
+    'weight': number;
 
     static discriminator: string | undefined = undefined;
 

@@ -13,8 +13,8 @@
 import { RequestFile } from './models';
 
 export class RiskPolicySetConditionBetween {
-    'minScore'?: number;
-    'maxScore'?: number;
+    'minScore': number;
+    'maxScore': number;
 
     static discriminator: string | undefined = undefined;
 
